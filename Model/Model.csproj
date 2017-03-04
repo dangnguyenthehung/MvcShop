@@ -69,9 +69,11 @@
     <Compile Include="Framework\sysdiagram.cs" />
     <Compile Include="Framework\User.cs" />
     <Compile Include="Framework\View_ProductDetails.cs" />
+    <Compile Include="Framework\View_ShopProductInfo.cs" />
     <Compile Include="Object\BrandNumberProduct.cs" />
     <Compile Include="Object\LayoutProductType.cs" />
     <Compile Include="Object\MainProductType.cs" />
+    <Compile Include="Object\ShopProductInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

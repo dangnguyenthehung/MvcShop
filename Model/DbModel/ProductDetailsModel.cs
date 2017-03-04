@@ -1,4 +1,5 @@
 ﻿using Model.Framework;
+using Model.Object;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,23 +12,23 @@ namespace Model.DbModel
     public class ProductDetailsModel
     {
         public ShopdbContext context = new ShopdbContext();
-        public View_ProductDetails getDetails(int id)
+        public View_ProductDetails getDetails(int? id)
         {
+            if (id == null)
+            {
+                id = 1;
+            }
             object[] SqlParams =
             {
                 new SqlParameter("@id",id)
             };
-            var list = context.Database.SqlQuery<View_ProductDetails>("Sp_GetProductDetails", SqlParams).SingleOrDefault();
+            var list = context.Database.SqlQuery<View_ProductDetails>("Sp_GetProductDetails @id", SqlParams).SingleOrDefault();
             return list;
         }
-        public List<View_ProductDetails> getDetails_All()
+        public List<ShopProductInfo> getDetails_All()
         {
-            int id = 0;
-            object[] sqlParams =
-            {
-                new SqlParameter("@id", id)
-            };
-            var list = context.Database.SqlQuery<View_ProductDetails>("Sp_GetProductDetails @id", sqlParams).ToList();
+            
+            var list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetShopProductInfo").ToList();
             return list;
         }
     }

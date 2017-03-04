@@ -216,6 +216,7 @@
     <Compile Include="Models\LayoutViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductDetailsModel.cs" />
+    <Compile Include="Models\ShopModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

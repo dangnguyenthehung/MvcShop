@@ -1,0 +1,10 @@
+D:\MvcShop\MvcShop\Model\bin\Release\Model.dll.config
+D:\MvcShop\MvcShop\Model\bin\Release\Model.dll
+D:\MvcShop\MvcShop\Model\bin\Release\Model.pdb
+D:\MvcShop\MvcShop\Model\bin\Release\EntityFramework.dll
+D:\MvcShop\MvcShop\Model\bin\Release\EntityFramework.SqlServer.dll
+D:\MvcShop\MvcShop\Model\bin\Release\EntityFramework.xml
+D:\MvcShop\MvcShop\Model\bin\Release\EntityFramework.SqlServer.xml
+D:\MvcShop\MvcShop\Model\obj\Release\Model.dll
+D:\MvcShop\MvcShop\Model\obj\Release\Model.pdb
+D:\MvcShop\MvcShop\Model\obj\Release\Model.csprojResolveAssemblyReference.cache

@@ -10,25 +10,72 @@ namespace MvcShop.Models
     {
         public List<ShopProductInfo> ListProduct { get; set; }
 
+        private Model.DbModel.ProductDetailsModel context = new Model.DbModel.ProductDetailsModel();
+        private List<ShopProductInfo> tempList = new List<ShopProductInfo>();
+
         public ShopModel()
         {
-            Model.DbModel.ProductDetailsModel context = new Model.DbModel.ProductDetailsModel();
             List<ShopProductInfo> contextList = context.getDetails_All();
             ListProduct = contextList;
         }
+
         public ShopModel(int page)
         {
-            Model.DbModel.ProductDetailsModel context = new Model.DbModel.ProductDetailsModel();
+            tempList = get_all(page);
+            ListProduct = tempList;
+        }
+        public ShopModel(string action, int id, int page)
+        {
+            switch (action)
+            {
+                case "brand":
+                    tempList = get_list_brand(id, page);
+                    break;
+                case "type":
+                    tempList = get_list_type(id, page);
+                    break;
+                default:
+                    break;
+            }
+
+            ListProduct = tempList;
+        }
+        private List<ShopProductInfo> get_all(int page)
+        {
             List<ShopProductInfo> contextList = context.getDetails_All();
-            List<ShopProductInfo> tempList = new List<ShopProductInfo>();
+            
+            return pagination(contextList, page);
+        }
+
+        private List<ShopProductInfo> get_list_brand(int brandId, int page)
+        {
+            List<ShopProductInfo> contextList = context.getDetails_Brand(brandId);
+
+            return pagination(contextList,page);
+        }
+
+        private List<ShopProductInfo> get_list_type(int typeId, int page)
+        {
+            List<ShopProductInfo> contextList = context.getDetails_Type(typeId);
+
+            return pagination(contextList, page);
+        }
+
+        private List<ShopProductInfo> pagination(List<ShopProductInfo> contextList, int page)
+        {
+            int maxLength = contextList.Count();
             int begin = (page - 1) * 12;
             int end = (page) * 12;
-            
+
             for (var i = begin; i < end; i++)
             {
+                if (i >= maxLength)
+                {
+                    break;
+                }
                 tempList.Add(contextList[i]);
             }
-            ListProduct = tempList;
+            return tempList;
         }
     }
 }

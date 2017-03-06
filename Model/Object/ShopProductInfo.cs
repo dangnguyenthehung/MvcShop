@@ -9,6 +9,10 @@ namespace Model.Object
 {
     public class ShopProductInfo : View_ShopProductInfo
     {
-        
+        public string formattedPrice() {
+            string str = String.Format("{0:n0}", NewPrice);
+            str = str.Replace(",", ".");
+            return str;
+        }
     }
 }

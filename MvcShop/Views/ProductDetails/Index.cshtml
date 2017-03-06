@@ -1,5 +1,24 @@
 ﻿@model MvcShop.Models.ProductDetailsModel
 @{
+    string status = "Còn hàng";
+    string strPrice = "";
+    string strOldPrice = "";
+    
+
+    if (Model.Details.ProductStatus == 1)
+    {
+        status = "Còn hàng";
+    }
+    else
+    {
+        status = "Tạm hết hàng!";
+    }
+    strPrice = String.Format("{0:n0}", Model.Details.NewPrice);
+    strPrice = strPrice.Replace(",", ".");
+    strOldPrice = String.Format("{0:n0}", Model.Details.OldPrice);
+    strOldPrice = strOldPrice.Replace(",", ".");
+}
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -48,22 +67,22 @@
             <div class="product-information">
                 <!--/product-information-->
                 <img src="images/product-details/new.jpg" class="newarrival" alt="" />
-                <h2>@Html.DisplayFor(model => Model.listDetails[0].ProductName)</h2>
-                <p>Mã sản phẩm: BFV-81SEHC</p>
-                <img src="images/product-details/rating.png" alt="" />
+                <h2>@Html.DisplayFor(model => Model.Details.ProductName)</h2>
+                <p>Mã sản phẩm: @Html.DisplayFor(model => Model.Details.ProductCode)</p>
+                <div><img src="images/product-details/rating.png" alt="rating" /></div>
                 <span>
-                    <span id="price">@Html.DisplayFor(model => Model.listDetails[0].NewPrice)</span>
-                    <label>Quantity:</label>
-                    <input type="text" value="3" />
+                    <span id="price">@strPrice <sup class="currency">đ</sup></span> 
+                    <label>Số lượng:</label>
+                    <input type="text" value="3" /> <br />
                     <button type="button" class="btn btn-fefault cart">
                         <i class="fa fa-shopping-cart"></i>
                         Add to cart
                     </button>
                 </span>
-                <p><b>Old price: </b><span class="old_price">@Html.DisplayFor(model => Model.listDetails[0].OldPrice)</span></p>
-                <p><b>Availability:</b> In Stock</p>
+                <p><b>Giá hãng: </b><span class="old_price">@strOldPrice <sup class="currency">đ</sup></span></p>
+                <p><b>Tình trạng:</b> @status</p>
                 
-                <p><b>Brand:</b> @Html.DisplayFor(model => Model.listDetails[0].BrandName)</p>
+                <p><b>Thương hiệu:</b> @Html.DisplayFor(model => Model.Details.BrandName)</p>
                 <!--
                 <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
                 -->
@@ -269,80 +288,39 @@
         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/recommend1.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                    @for (var i = 1; i <= 3; i++)
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="images/home/recommend1.jpg" alt="" />
+                                        <h2>$56</h2>
+                                        <p> @i + Easy Polo Black Edition</p>
+                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/recommend2.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/recommend3.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
+                    
                 </div>
                 <div class="item">
+                    @for (var i = 1; i <= 3; i++)
+                    {
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <img src="images/home/recommend1.jpg" alt="" />
                                     <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
+                                    <p>Easy Polo Black Edition + @i</p>
                                     <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/recommend2.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="images/home/recommend3.jpg" alt="" />
-                                    <h2>$56</h2>
-                                    <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
             <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">

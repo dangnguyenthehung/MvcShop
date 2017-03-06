@@ -483,6 +483,8 @@
     <Content Include="Views\Compare\Index.cshtml" />
     <Content Include="Views\Compare\Slider.cshtml" />
     <Content Include="Views\Shop\Pages.cshtml" />
+    <Content Include="Views\Shop\Brands.cshtml" />
+    <Content Include="Views\Shop\Types.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

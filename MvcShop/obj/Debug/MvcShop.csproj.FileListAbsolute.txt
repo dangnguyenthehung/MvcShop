@@ -248,3 +248,5 @@ D:\MvcShop\MvcShop\MvcShop\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\MvcShop\MvcShop\MvcShop\obj\Debug\MvcShop.csprojResolveAssemblyReference.cache
 D:\MvcShop\MvcShop\MvcShop\obj\Debug\MvcShop.dll
 D:\MvcShop\MvcShop\MvcShop\obj\Debug\MvcShop.pdb
+D:\Project\MvcShop\MvcShop\MvcShop\bin\Model.dll
+D:\Project\MvcShop\MvcShop\MvcShop\bin\Model.pdb

@@ -12,8 +12,17 @@ namespace MvcShop.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            ShopModel model = new ShopModel();
+            int defaultPage = 1;
+            ShopModel model = new ShopModel(defaultPage);
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Pages(int page)
+        {
+
+            ShopModel models = new ShopModel(page);
+            return View(models);
         }
 
         public ActionResult Details(int id)

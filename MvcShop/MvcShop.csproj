@@ -482,6 +482,7 @@
     <Content Include="Views\Blog\Slider.cshtml" />
     <Content Include="Views\Compare\Index.cshtml" />
     <Content Include="Views\Compare\Slider.cshtml" />
+    <Content Include="Views\Shop\Pages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

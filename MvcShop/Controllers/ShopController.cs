@@ -13,6 +13,7 @@ namespace MvcShop.Controllers
         public ActionResult Index()
         {
             int defaultPage = 1;
+            ViewBag.PageTitle = "Cửa hàng";
             //ShopModel model = new ShopModel(defaultPage);
             return RedirectToAction("Pages", new { page = defaultPage });
         }
@@ -22,6 +23,10 @@ namespace MvcShop.Controllers
         {
             string action = "page";
             ShopModel models = new ShopModel(page);
+
+            ViewBag.PageTitle = "Trang " + page;
+            
+            
             return View(models);
         }
 
@@ -31,6 +36,10 @@ namespace MvcShop.Controllers
             string action = "brand";
             ViewBag.Brand = brandId;
             ShopModel models = new ShopModel(action, brandId, page);
+            if (models.ListProduct.Count() != 0)
+            {
+                ViewBag.PageTitle = models.ListProduct[0].BrandName;
+            }
             return View(models);
         }
 
@@ -40,6 +49,10 @@ namespace MvcShop.Controllers
             string action = "type";
             ViewBag.Type = typeId;
             ShopModel models = new ShopModel(action, typeId, page);
+            if (models.ListProduct.Count() != 0)
+            {
+                ViewBag.PageTitle = models.get_Type(typeId);
+            }
             return View(models);
         }
 

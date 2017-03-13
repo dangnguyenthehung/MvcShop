@@ -94,27 +94,21 @@
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             @*<li><a href="index.html" class="active">Home</a></li>*@
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("TRANG CHỦ", "Index", "Home")</li>
+                            <li>@Html.ActionLink("KHUYẾN MÃI", "Index", "Blog")</li>
                             <li class="dropdown">
-                                @Html.ActionLink("Shop", "Index", "Shop")
+                                @Html.ActionLink("CỬA HÀNG", "Index", "Shop")
                                 <i class="fa fa-angle-down"></i>
                                 <ul role="menu" class="sub-menu">
-                                    <li>@Html.ActionLink("Shop","Index", "Shop")</li>
-                                    <li>@Html.ActionLink("Product Details", "Index", "ProductDetails")</li>
-                                    <li>@Html.ActionLink("Checkout", "Index", "Checkout")</li>
-                                    <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
+                                    <li>@Html.ActionLink("Cửa hàng", "Index", "Shop")</li>
+                                    
+                                    <li>@Html.ActionLink("Thanh toán", "Index", "Checkout")</li>
+                                    <li>@Html.ActionLink("Giỏ hàng", "Index", "Cart")</li>
                                 </ul>
                             </li>
-                            <li>@Html.ActionLink("Blog", "Index", "Blog")</li>
-                            @*<li class="dropdown">
-                                <a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="blog.html">Blog List</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
-                                </ul>
-                            </li>*@
+                            
                             <li><a href="@Url.Action("Index", "error")">404</a></li>
-                            <li><a href="@Url.Action("Index", "ContactUs")">Contact</a></li>
+                            <li><a href="@Url.Action("Index", "ContactUs")">LIÊN HỆ</a></li>
                         </ul>
                     </div>
                 </div>

@@ -63,9 +63,10 @@ namespace MvcShop.Models
 
         private List<ShopProductInfo> pagination(List<ShopProductInfo> contextList, int page)
         {
+            int item_per_page = 21;
             int maxLength = contextList.Count();
-            int begin = (page - 1) * 12;
-            int end = (page) * 12;
+            int begin = (page - 1) * item_per_page;
+            int end = (page) * item_per_page;
 
             for (var i = begin; i < end; i++)
             {
@@ -76,6 +77,11 @@ namespace MvcShop.Models
                 tempList.Add(contextList[i]);
             }
             return tempList;
+        }
+        public string get_Type(int typeId)
+        {
+            string type = context.get_type_name(typeId);
+            return type;
         }
     }
 }

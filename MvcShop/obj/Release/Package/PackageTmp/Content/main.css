@@ -699,11 +699,11 @@ h2.title:before{
 	position: absolute;
 	background: #fff;
 	bottom: -6px;
-	width: 220px;
+	width: 250px;
 	height: 30px;
 	z-index: -1;
 	left: 50%;
-	margin-left: -110px;
+	margin-left: -125px;
 }
 
 .category-products .panel {
@@ -841,9 +841,9 @@ h2.title {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  margin: 0 15px;
+  margin: 5px 15px;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   position: relative;
 }
 
@@ -879,10 +879,19 @@ h2.title {
 
 .productinfo p{
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 600;
   color: #696763;
 }
+.productinfo p a{
+  cursor: pointer;
+  color: #696763;
+}
+.productinfo p a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
 
 .productinfo img{
   width: 100%;
@@ -901,21 +910,28 @@ h2.title {
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .single-products:hover .product-overlay {
   display:block;
-  height:100%;
+  height:60%;
 }
 
 
 .product-overlay .overlay-content {
-  bottom: 0;
   position: absolute;
   bottom: 0;
   text-align: center;
   width: 100%;
+  top: -200px;
+  padding: 30px 20px 80px 20px;
+  transition: top 500ms ease 0s;
+}
+.single-products:hover .product-overlay .overlay-content {
+  position: absolute;
+  top: 0;
+  
 }
 
 .product-overlay .add-to-cart {
@@ -936,7 +952,7 @@ h2.title {
 
 .product-overlay p{
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   color: #fff;
 }
@@ -1041,7 +1057,20 @@ h2.title {
   line-height: 1.42857;
   margin-right:0;
 }
-
+.moreFeatures {
+    margin-bottom: 15px;
+}
+.moreFeatures .btn-more {
+    height: 40px;
+    background-color: #3498db;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+.moreFeatures .btn-more a {
+    color: white;
+    text-decoration: none;
+}
 .recommended_items {
   overflow: hidden;
 }
@@ -1095,7 +1124,9 @@ h2.title {
 #advertisement img {
   width: 100%;
 }
-
+.pagination-container {
+    text-align: right;
+}
 .pagination {
   display: inline-block;
   margin-bottom: 25px;
@@ -1201,6 +1232,8 @@ h2.title {
 #similar-product .carousel-inner .item img {
   display: inline-block;
   margin-left: 15px;
+  width: 85px;
+  height: 84px;
 }
 
 .item-control {

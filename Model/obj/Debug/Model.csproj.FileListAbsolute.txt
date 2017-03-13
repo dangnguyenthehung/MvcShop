@@ -15,6 +15,5 @@ D:\Project\MvcShop\MvcShop\Model\bin\Debug\EntityFramework.dll
 D:\Project\MvcShop\MvcShop\Model\bin\Debug\EntityFramework.SqlServer.dll
 D:\Project\MvcShop\MvcShop\Model\bin\Debug\EntityFramework.xml
 D:\Project\MvcShop\MvcShop\Model\bin\Debug\EntityFramework.SqlServer.xml
-D:\Project\MvcShop\MvcShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\Project\MvcShop\MvcShop\Model\obj\Debug\Model.dll
 D:\Project\MvcShop\MvcShop\Model\obj\Debug\Model.pdb

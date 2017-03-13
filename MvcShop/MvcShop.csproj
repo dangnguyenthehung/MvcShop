@@ -210,6 +210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CompareModel.cs" />
     <Compile Include="Models\Demo.cs" />
     <Compile Include="Models\HomePageModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -345,6 +346,7 @@
     <Content Include="images\shop\A-6099-WT-HS.jpg" />
     <Content Include="images\shop\Ac4005vn2to.jpg" />
     <Content Include="images\shop\advertisement.jpg" />
+    <Content Include="images\shop\logo_american_standard.png" />
     <Content Include="images\shop\B150C-2016817199.jpg" />
     <Content Include="images\shop\bfv-41s.jpg" />
     <Content Include="images\shop\bfv-5103t-5c.jpg" />
@@ -362,6 +364,7 @@
     <Content Include="images\shop\default-img.png" />
     <Content Include="images\shop\dl224_pg.jpg" />
     <Content Include="images\shop\dlb309-1_b_1.jpg" />
+    <Content Include="images\shop\logo_inax.jpg" />
     <Content Include="images\shop\l-282v.jpg" />
     <Content Include="images\shop\l-298v-l-298vd_1.jpg" />
     <Content Include="images\shop\l282...jpg" />
@@ -370,6 +373,7 @@
     <Content Include="images\shop\lfv-12a.jpg" />
     <Content Include="images\shop\lfv_13b.jpg" />
     <Content Include="images\shop\lfv_20s.jpg" />
+    <Content Include="images\shop\logo_caesar.jpg" />
     <Content Include="images\shop\lw1617cb.jpg" />
     <Content Include="images\shop\lw991a.jpg" />
     <Content Include="images\shop\ms636cdw9_1.png" />
@@ -393,6 +397,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\shop\sfv-105mm.jpg" />
+    <Content Include="images\shop\logo_toto.jpg" />
     <Content Include="images\shop\TVLM106CR.jpg" />
     <Content Include="images\shop\tvms110ru.ttsr106emf.jpg" />
     <Content Include="images\shop\tvsm110ru.dgh104zr.jpg" />

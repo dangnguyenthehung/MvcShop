@@ -57,5 +57,16 @@ namespace Model.DbModel
             var list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetTypeProductInfo @id", SqlParams).ToList();
             return list;
         }
+
+        //get Type name
+        public string get_type_name(int id)
+        {
+            object[] SqlParams =
+            {
+                new SqlParameter("@id",id)
+            };
+            var name = context.Database.SqlQuery<string>("Sp_GetTypeName @id", SqlParams).SingleOrDefault();
+            return name;
+        }
     }
 }

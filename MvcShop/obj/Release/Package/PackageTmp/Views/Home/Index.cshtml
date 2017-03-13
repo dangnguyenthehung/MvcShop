@@ -1,213 +1,73 @@
 ﻿@model MvcShop.Models.HomePageModel
 @{
+    string status = "Còn hàng";
+}
+@{
     ViewBag.Title = "Home Page";
 }
 <div class="col-sm-9 padding-right">
     <div class="features_items">
         <!--features_items-->
-        <h2 class="title text-center">Features Items</h2>
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="~/images/home/product1.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                    <div class="product-overlay">
-                        <div class="overlay-content">
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <h2>$56</h2>
-                            <p>Easy Polo Black Edition</p>
+        <h2 class="title text-center">Sản phẩm của chúng tôi</h2>
+        @foreach (var item in Model.ListProduct)
+        {
+            string formattedPrice = item.formattedPrice();
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="@Html.DisplayFor(i=>item.ProductImages)" alt="" />
+                            <h2>@formattedPrice <sup class="currency">đ</sup></h2>
+                            <p>
+                                @Html.ActionLink(
+                                item.ProductCode,
+                                "Details", "Shop",
+                                new { id = item.Id } , null )
+                            </p>
+
                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                         </div>
+                        <div class="product-overlay">
+                            <div class="overlay-content">
+                                <p><span>Sản phẩm: </span>@Html.DisplayFor(m => item.ProductName)</p>
+                                <p><span>Thương hiệu: </span>@Html.DisplayFor(m => item.BrandName)</p>
+
+                                @if (item.ProductStatus == 1)
+                                {
+                                    status = "Còn hàng";
+                                }
+                                else
+                                {
+                                    status = "Tạm hết hàng!";
+                                }
+                                <p>
+                                    <span>Trạng thái: @status</span>
+
+                                </p>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
+                    <div class="choose">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                            <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="~/images/home/product2.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                    <div class="product-overlay">
-                        <div class="overlay-content">
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <h2>$56</h2>
-                            <p>Easy Polo Black Edition</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="~/images/home/product3.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                    <div class="product-overlay">
-                        <div class="overlay-content">
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <h2>$56</h2>
-                            <p>Easy Polo Black Edition</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="~/images/home/product4.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                    <div class="product-overlay">
-                        <div class="overlay-content">
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <h2>$56</h2>
-                            <p>Easy Polo Black Edition</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                        </div>
-                    </div>
-                    <img src="~/images/home/new.png" class="new" alt="" />
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="~/images/home/product5.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                    <div class="product-overlay">
-                        <div class="overlay-content">
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <h2>$56</h2>
-                            <p>Easy Polo Black Edition</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                        </div>
-                    </div>
-                    <img src="~/images/home/sale.png" class="new" alt="" />
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="~/images/home/product6.jpg" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                    <div class="product-overlay">
-                        <div class="overlay-content">
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <p>Additional content here</p>
-                            <h2>$56</h2>
-                            <p>Easy Polo Black Edition</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
+        }
+    
+    
+    </div><!--features_items-->
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-4 col-md-2 pull-right moreFeatures">
+                <div class="btn-more">@Html.ActionLink("More >>", "Pages", "Shop", new { page = 1 }, null)</div>
             </div>
         </div>
 
-    </div><!--features_items-->
+    </div>
 
     <div class="category-tab">
         <!--category-tab-->

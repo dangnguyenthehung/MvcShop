@@ -4,38 +4,68 @@
         <h2>Sản phẩm</h2>
         <div class="panel-group category-products" id="accordian">
             <!--category-productsr-->
+        @foreach (var item in Model.Main_ProductType)
+        {
+            if (item.haveSubType)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#" href="#@Html.DisplayFor(i => item.Id)">
+                                <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                @Html.ActionLink(item.TypeName.ToString(),"Types","Shop", new { typeId = item.Id, page = 1 },null)
+                                @*@Html.DisplayFor(i => item.TypeName)*@
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="@Html.DisplayFor(i => item.Id)" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                                @foreach (var subitem in Model.Sub_ProductType)
+                                {
+                                    if (subitem.ParentTypeId == item.Id)
+                                    {
+                                        <li>
+                                            @Html.ActionLink(subitem.TypeName.ToString(),"Types","Shop", new { typeId = subitem.Id, page = 1 },null)
+                                        </li>
+                                        @*<li><a href="@Html.DisplayFor(s => subitem.Id)">
+                                            @Html.DisplayFor(s => subitem.TypeName)
+                                        </a></li>*@
+                                    }
+                                }
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Bàn cầu</a></h4>
+                                
+                                @*<li><a href="">Vòi lavabo</a></li>
+                                <li><a href="">Xịt vệ sinh</a></li>
+                                <li><a href="">Sen tắm</a></li>*@
+
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="panel panel-default">
+            }
+            else
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            @Html.ActionLink(item.TypeName.ToString(), "Types", "Shop", new { typeId = item.Id, page = 1 },null)
+                            @*<a href="#">@Html.DisplayFor(i => item.TypeName)</a>*@
+                        </h4>
+                    </div>
+                </div>
+            }
+
+        }
+            
+
+            @*<div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title"><a href="#">Lavabo</a></h4>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                            Phụ kiện phòng tắm
-                        </a>
-                    </h4>
-                </div>
-                <div id="sportswear" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <ul>
-                            <li><a href="">Vòi sen </a></li>
-                            <li><a href="">Vòi lavabo</a></li>
-                            <li><a href="">Xịt vệ sinh</a></li>
-                            <li><a href="">Sen tắm</a></li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            </div>*@
+
+            
 
             @*<div class="panel panel-default">
                 <div class="panel-heading">
@@ -113,27 +143,47 @@
       
           </div><!--/category-productsr-->
 
+        <!-- Action Link Menu -->
         <div class="brands_products">
             <!--brands_products-->
             <h2>Thương hiệu</h2>
             <div class="brands-name">
                 <ul class="nav nav-pills nav-stacked">
-                    @*<li><a href=""> <span class="pull-right">(50)</span>INAX</a></li>
-                    <li><a href=""> <span class="pull-right">(32)</span>Caesar</a></li>
-                    
-                    <li><a href=""> <span class="pull-right">(27)</span>American Standard</a></li>
-                    <li><a href=""> <span class="pull-right">(56)</span>TOTO</a></li>*@
+                    @foreach (var item in Model.Brand_Number_of_Product)
+                    {
+                        <li>
+                            <a href="@Url.Action("Brands", "Shop", new { brandId = item.Id, page = 1})">
+                                <span class="pull-right">(@Html.DisplayFor(i => item.NumberOfProduct))</span>
+                                <span>@Html.DisplayFor(i => item.BrandName)</span>
+                            </a>
+                        </li>
+
+                        @*<li>
+                                @Html.ActionLink(item.BrandName.ToString(), "Brands", "Shop", new { brandId = item.Id, page = 1}, null)
+                                    <span class="pull-right">(@Html.DisplayFor(i => item.NumberOfProduct))</span>
+                            </li>*@
+                    }
+                </ul>
+            </div>
+        </div><!--/brands_products-->
+
+        @*<div class="brands_products">
+            <!--brands_products-->
+            <h2>Thương hiệu</h2>
+            <div class="brands-name">
+                <ul class="nav nav-pills nav-stacked">
 
                     @foreach (var item in Model.Brand_Number_of_Product)
                     {
-                        <li><a href="@Html.DisplayFor(i => item.BrandOrder)"> 
+
+                        <li><a href="@Html.DisplayFor(i => item.BrandOrder)">
                             <span class="pull-right">(@Html.DisplayFor(i => item.NumberOfProduct))</span>
                             @Html.DisplayFor(i => item.BrandName)
                         </a></li>
                     }
                 </ul>
             </div>
-        </div><!--/brands_products-->
+        </div><!--/brands_products-->*@
 
         <div class="price-range">
             <!--price-range-->

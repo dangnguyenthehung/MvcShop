@@ -12,53 +12,9 @@
     <div class="features_items">
         <!--features_items-->
         <h2 class="title text-center">@ViewBag.PageTitle</h2>
-        @foreach (var item in Model.ListProduct)
-        {
-            string formattedPrice = item.formattedPrice();
-            <div class="col-sm-4">
-                <div class="product-image-wrapper">
-                    <div class="single-products">
-                        <div class="productinfo text-center">
-                            <img src="~/images/shop/product12.jpg" alt="" />
-                            <h2>@formattedPrice <sup class="currency">đ</sup></h2>
-                            <p>
-                                @Html.ActionLink(
-                                item.BrandName + " " + item.ProductCode,
-                                "Details",
-                                new { id = item.Id })
-                            </p>
-
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                        </div>
-                        <div class="product-overlay">
-                            <div class="overlay-content">
-                                <p><span>Sản phẩm: </span>@Html.DisplayFor(m => item.ProductName)</p>
-                                <p><span>Thương hiệu: </span>@Html.DisplayFor(m => item.BrandName)</p>
-
-                                @if (item.ProductStatus == 1)
-                                {
-                                    status = "Còn hàng";
-                                }
-                                else
-                                {
-                                    status = "Tạm hết hàng!";
-                                }
-                                <p>
-                                    <span>Trạng thái: @status</span>
-
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="choose">
-                        <ul class="nav nav-pills nav-justified">
-                            <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                            <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        @{
+            MvcShop.Models.ShopModel partialModel = Model;
+            Html.RenderPartial("ListProduct", partialModel);
         }
 
     </div><!--features_items-->

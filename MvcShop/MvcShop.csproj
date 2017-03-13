@@ -247,6 +247,7 @@
     <Content Include="images\home\gallery2.jpg" />
     <Content Include="images\home\gallery3.jpg" />
     <Content Include="images\home\gallery4.jpg" />
+    <Content Include="images\home\shipping.jpg" />
     <Content Include="images\home\iframe1.png" />
     <Content Include="images\home\iframe2.png" />
     <Content Include="images\home\iframe3.png" />
@@ -284,7 +285,7 @@
     <Content Include="images\home\sale.png" />
     <Content Include="images\home\searchicon.png" />
     <Content Include="images\home\shipping-ori.jpg" />
-    <Content Include="images\home\shipping.jpg" />
+    <Content Include="images\home\shipping-old.jpg" />
     <Content Include="images\home\shipping.png" />
     <Content Include="images\home\shipping1.png" />
     <Content Include="images\home\voi1.jpg" />
@@ -490,6 +491,8 @@
     <Content Include="Views\Shop\Pages.cshtml" />
     <Content Include="Views\Shop\Brands.cshtml" />
     <Content Include="Views\Shop\Types.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Shop\ListProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

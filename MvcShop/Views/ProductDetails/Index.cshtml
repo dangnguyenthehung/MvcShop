@@ -29,8 +29,22 @@
         <!--product-details-->
         <div class="col-sm-6">
             <div class="view-product">
-                <img src="@Html.DisplayFor(i => Model.Details.ProductImages)" alt="" />
+                <img src="@Html.DisplayFor(i => Model.Details.ProductImages)" alt="" class="main_img" />
             </div>
+
+            <!-- img hover to zoom-->
+
+            @*<div class="view-product wm-zoom-container demo">
+                <div class="wm-zoom-box">
+                    <img src="@Html.DisplayFor(i => Model.Details.ProductImages)" class="wm-zoom-default-img main_img"
+                         data-hight-src="@Html.DisplayFor(i => Model.Details.ProductImages)"
+                         data-loader-src="loader.gif">
+                    
+                </div>
+            </div>*@
+
+            <!-- end hover to zoom-->
+
             @*<div id="similar-product" class="carousel slide" data-ride="carousel">
 
                 <!-- Wrapper for slides -->

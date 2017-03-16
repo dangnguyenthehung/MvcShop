@@ -10,6 +10,7 @@ body {
   font-family: 'Roboto', sans-serif;
   position: relative;
   font-weight: 400;
+  background: #fff;
 }
 
 ul li {
@@ -657,7 +658,7 @@ ul.sub-menu {
 }
 
 .category-products {
-  border: 1px solid #F7F7F0;
+  border: 1px solid #EEE;
   margin-bottom: 35px;
   padding-bottom: 20px;
   padding-top: 15px;
@@ -764,7 +765,7 @@ h2.title:before{
 }
 
 .brands-name {
-  border: 1px solid #F7F7F0;
+  border: 1px solid #EEE;
   padding-bottom: 20px;
   padding-top: 15px;
 }
@@ -969,7 +970,7 @@ h2.title {
 
 
 .add-to-cart {
-  background:#d1d9e8;
+  background:#ecf0f1;
   border: 0 none;
   border-radius: 0;
   color: #696763;
@@ -1208,7 +1209,7 @@ h2.title {
   padding: 60px 10px;
 }
 
-.view-product img {
+.view-product img.main_img {
   border: 1px solid #F7F7F0;
   /*height: 380px;
   width: 100%;*/

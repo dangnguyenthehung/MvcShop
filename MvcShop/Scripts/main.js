@@ -50,6 +50,23 @@ $(document).ready(function(){
 
 	    }
 
+	    $( '.demo' ).WMZoom( {
+	        config: {
+
+	            // stage size
+	            stageW: 400,
+                
+
+	            // disable inner zoom
+                inner: false,
+
+                position: 'right',
+                margin: 10
+
+	        }
+	    } );
+
+
 	
 
 });

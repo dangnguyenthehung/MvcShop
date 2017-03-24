@@ -17,12 +17,3 @@ D:\Project\MvcShop\MvcShop\Model\bin\Debug\EntityFramework.xml
 D:\Project\MvcShop\MvcShop\Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\Project\MvcShop\MvcShop\Model\obj\Debug\Model.dll
 D:\Project\MvcShop\MvcShop\Model\obj\Debug\Model.pdb
-E:\Project\MvcShop\Model\bin\Debug\Model.dll.config
-E:\Project\MvcShop\Model\bin\Debug\Model.dll
-E:\Project\MvcShop\Model\bin\Debug\Model.pdb
-E:\Project\MvcShop\Model\bin\Debug\EntityFramework.dll
-E:\Project\MvcShop\Model\bin\Debug\EntityFramework.SqlServer.dll
-E:\Project\MvcShop\Model\bin\Debug\EntityFramework.xml
-E:\Project\MvcShop\Model\bin\Debug\EntityFramework.SqlServer.xml
-E:\Project\MvcShop\Model\obj\Debug\Model.dll
-E:\Project\MvcShop\Model\obj\Debug\Model.pdb

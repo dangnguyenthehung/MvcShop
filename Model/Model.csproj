@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DbModel\LayoutModel.cs" />
     <Compile Include="DbModel\ProductDetailsModel.cs" />
+    <Compile Include="DbModel\UserModel.cs" />
     <Compile Include="Framework\Advertise.cs" />
     <Compile Include="Framework\Brand.cs" />
     <Compile Include="Framework\Contact.cs" />

@@ -218,6 +218,7 @@ D:\Project\MvcShop\MvcShop\MvcShop\bin\System.Web.WebPages.dll
 D:\Project\MvcShop\MvcShop\MvcShop\bin\System.Web.WebPages.Razor.dll
 D:\Project\MvcShop\MvcShop\MvcShop\bin\WebGrease.dll
 D:\Project\MvcShop\MvcShop\MvcShop\bin\Model.pdb
+D:\Project\MvcShop\MvcShop\MvcShop\bin\Model.dll.config
 D:\Project\MvcShop\MvcShop\MvcShop\bin\Microsoft.AI.DependencyCollector.xml
 D:\Project\MvcShop\MvcShop\MvcShop\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Project\MvcShop\MvcShop\MvcShop\bin\Microsoft.AI.Web.xml

@@ -285,7 +285,6 @@ a#scrollUp i{
   display: block;
   -webkit-animation: fadeInUp 400ms;
   -moz-animation: fadeInUp 400ms;
-  -ms-animation: fadeInUp 400ms;
   -o-animation: fadeInUp 400ms;
   animation: fadeInUp 400ms;
 }
@@ -1565,10 +1564,14 @@ h2.title {
 .login-form label input {
   border: medium none;
   display: inline-block;
-  height: 0;
+  height: 16px;
   margin-bottom: 0;
   outline: medium none;
   padding-left: 0;
+  width: 16px;
+  position: relative;
+  top: 3px;
+  margin-top: 0px;
 }
 
 
@@ -2209,7 +2212,7 @@ h2.title {
 
 .rating-area {
   border: 1px solid #F7F7F0;
-  direction: block;
+  /*direction: block;*/
   overflow: hidden;
 }
 

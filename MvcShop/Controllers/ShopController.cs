@@ -21,7 +21,7 @@ namespace MvcShop.Controllers
         [HttpGet]
         public ActionResult Pages(int page)
         {
-            string action = "page";
+            //string action = "page";
             ShopModel models = new ShopModel(page);
 
             ViewBag.PageTitle = "Trang " + page;

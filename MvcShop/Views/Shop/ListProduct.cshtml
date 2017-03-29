@@ -2,6 +2,11 @@
 @{
     string status = "Còn hàng";
 }
+<script>
+    var AppUrlSettings = {
+        AddToCartUrl: '@Url.Action("AddToCart","Cart")'
+    }
+</script>
     @foreach (var item in Model.ListProduct)
     {
         string formattedPrice = item.formattedPrice();
@@ -21,7 +26,7 @@
                                 new { id = item.Id })
                         </p>
 
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                        <div class="btn btn-default add-to-cart" data-productID="@Html.DisplayFor(m => item.Id)"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</div>
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">

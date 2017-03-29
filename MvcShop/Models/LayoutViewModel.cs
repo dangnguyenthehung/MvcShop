@@ -7,12 +7,13 @@ using System.Web;
 
 namespace MvcShop.Models
 {
-    public abstract class LayoutViewModel
+    public abstract class LayoutViewModel : MainLayoutModel
     {
         public List<BrandNumberOfProduct> Brand_Number_of_Product { get; set; }
         public List<MainProductType> Main_ProductType { get; set; }
         public List<LayoutProductType> Sub_ProductType { get; set; }
-
+        
+        
         public LayoutViewModel()
         {
             LayoutModel layoutModel = new LayoutModel();

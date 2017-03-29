@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbModel\CheckoutModel.cs" />
     <Compile Include="DbModel\LayoutModel.cs" />
     <Compile Include="DbModel\ProductDetailsModel.cs" />
     <Compile Include="DbModel\UserModel.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Framework\View_ProductDetails.cs" />
     <Compile Include="Framework\View_ShopProductInfo.cs" />
     <Compile Include="Object\BrandNumberProduct.cs" />
+    <Compile Include="Object\CartItem.cs" />
     <Compile Include="Object\LayoutProductType.cs" />
     <Compile Include="Object\MainProductType.cs" />
     <Compile Include="Object\ShopProductInfo.cs" />

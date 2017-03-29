@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\SelectedCartItem.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -209,11 +210,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CompareModel.cs" />
     <Compile Include="Models\Demo.cs" />
     <Compile Include="Models\HomePageModel.cs" />
     <Compile Include="Models\LayoutViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MainLayoutModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductDetailsModel.cs" />
     <Compile Include="Models\ShopModel.cs" />

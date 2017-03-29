@@ -11,6 +11,7 @@
 
 $(document).ready(function(){
     zoom_similar_product();
+
 	$(function () {
 		$.scrollUp({
 	        scrollName: 'scrollUp', // Element ID
@@ -38,6 +39,7 @@ $(document).ready(function(){
 			$(".view-product img").attr("src",source);
 		});
 	}
+
 	
 	    function numberWithCommas(x) {
 	        var parts = x.toString().split(".");
@@ -66,7 +68,71 @@ $(document).ready(function(){
 	        }
 	    } );
 
+	    $( function ()
+	    {
+	        $( ".add-to-cart" ).click( function ()
+	        {
+	            //var url = '@Url.Action("LoadName","ChooseType")';
+	            var url = AppUrlSettings.AddToCartUrl;
+	            var ID = $( this ).attr( "data-productID" );
+	            var quantity = 1;
+	            // edit selected element row id
+	            
+	            var request = $( function ()
+	            {
+	                $.ajax( {
+	                    type: "POST",
+	                    url: url,
+	                    data: { ProductId: ID, Quantity: quantity },
+	                    success: function ( data )
+	                    {
+	                        alert( data );
+	                    }
+	                } );
+	            } );
 
+	        } );
+	    } );
+
+	    $( function ()
+	    {
+	        $( ".cart" ).click( function ()
+	        {
+	            //var url = '@Url.Action("LoadName","ChooseType")';
+	            var url = AppUrlSettings.AddToCartUrl;
+	            var ID = $( this ).attr( "data-productID" );
+	            var quantity = $( "input[name='quantity']" ).val();;
+	            // edit selected element row id
+
+	            var request = $( function ()
+	            {
+	                $.ajax( {
+	                    type: "POST",
+	                    url: url,
+	                    data: { ProductId: ID, Quantity: quantity },
+	                    success: function ( data )
+	                    {
+	                        alert( data );
+	                    }
+	                } );
+	            } );
+
+	        } );
+	    } );
 	
+	    
 
-});
+} );
+$( function quantity_changed()
+{
+    $( ".cart_quantity_input" ).change( function ()
+    {
+        var quantity = $( this ).val();
+        var price = $( this ).parents( ".item_cell" ).find( ".cart_price" ).attr( "data-price" );
+
+        var total_price = quantity * price;
+        total = $( this ).parents( ".item_cell" ).find( ".cart_total_price" ).html( total_price );
+    } )
+    
+
+} )

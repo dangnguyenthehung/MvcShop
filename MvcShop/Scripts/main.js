@@ -92,7 +92,28 @@ $(document).ready(function(){
 	            } );
 
 	        } );
-	    } );
+        });
+
+        $(function () {
+            $(".cart_quantity_delete").click(function () {
+                //var url = '@Url.Action("LoadName","ChooseType")';
+                var url = AppUrlSettings.RemoveFromCartUrl;
+                var ID = $(this).attr("data-productID");
+                // edit selected element row id
+
+                var request = $(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: { ProductId: ID },
+                        success: function (data) {
+                            alert(data);
+                        }
+                    });
+                });
+                location.reload();
+            });
+        });
 
 	    $( function ()
 	    {

@@ -4,7 +4,8 @@
 }
 <script>
     var AppUrlSettings = {
-        AddToCartUrl: '@Url.Action("AddToCart","Cart")'
+        AddToCartUrl: '@Url.Action("AddToCart","Cart")',
+        RemoveFromCartUrl: '@Url.Action("RemoveFromCart", "Cart")'
     }
 </script>
     @foreach (var item in Model.ListProduct)

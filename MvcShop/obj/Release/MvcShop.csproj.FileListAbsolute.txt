@@ -250,3 +250,4 @@ E:\Project\MvcShop\MvcShop\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\Project\MvcShop\MvcShop\obj\Release\MvcShop.csprojResolveAssemblyReference.cache
 E:\Project\MvcShop\MvcShop\obj\Release\MvcShop.dll
 E:\Project\MvcShop\MvcShop\obj\Release\MvcShop.pdb
+D:\Project\MvcShop\MvcShop\MvcShop\bin\Model.dll.config

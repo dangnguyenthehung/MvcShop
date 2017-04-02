@@ -1,0 +1,160 @@
+﻿@model Model.Framework.Product_Details
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
+}
+
+<h2>Details</h2>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Tables</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    DataTables Advanced Tables
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div>
+                        <h4>Product_Details</h4>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Brand.BrandName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Brand.BrandName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductType.TypeName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductType.TypeName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductCode)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductCode)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductDetail)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductDetail)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.OldPrice)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.OldPrice)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.NewPrice)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.NewPrice)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductImages)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductImages)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HeatType)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.HeatType)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductWeight)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductWeight)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductDimension)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductDimension)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.InsertDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.InsertDate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductOrder)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductOrder)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ProductStatus)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ProductStatus)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                    <!-- /.table-responsive -->
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+</div>
+
+
+

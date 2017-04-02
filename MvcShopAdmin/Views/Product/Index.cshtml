@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Model.Framework.Product_Details>
+
+@{
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
+}
+
+
+<div class="page-wrapper">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand.BrandName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductType.TypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OldPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeatType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDimension)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsertDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductStatus)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.BrandName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductType.TypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDetail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OldPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NewPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductImages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeatType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductWeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDimension)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsertDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductStatus)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+  

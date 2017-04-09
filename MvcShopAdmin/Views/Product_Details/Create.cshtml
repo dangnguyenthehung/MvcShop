@@ -14,7 +14,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
 
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("Create", "Product_Details", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
 
@@ -51,7 +51,8 @@
                             <div class="form-group row form-padding-10">
                                 @*@Html.LabelFor(model => model.HeatType, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                 <div class="col-md-2">
-                                    @Html.EditorFor(model => model.HeatType, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nóng/lạnh" } })
+                                    @*@Html.EditorFor(model => model.HeatType, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nóng/lạnh" } })*@
+                                    @Html.DropDownList("HeatType", null, htmlAttributes: new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.HeatType, "", new { @class = "text-danger" })
                                 </div>
                                 
@@ -91,8 +92,11 @@
 
                                 @*@Html.LabelFor(model => model.ProductImages, htmlAttributes: new { @class = "control-label col-md-2" })*@
                                 <div class="col-md-3">
-                                    @Html.EditorFor(model => model.ProductImages, new { htmlAttributes = new { @class = "form-control", @placeholder = "Hình ảnh" } })
+                                    @*@Html.EditorFor(model => model.ProductImages, new { htmlAttributes = new { @class = "form-control", @placeholder = "Hình ảnh" } })*@
+                                    @Html.TextBoxFor(model => model.ProductImages, new { type = "file" })
                                     @Html.ValidationMessageFor(model => model.ProductImages, "", new { @class = "text-danger" })
+
+                                    @*<input type="file" name="ProductImages"/>*@
                                 </div>
                             </div>
 

@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Threading;
+using System.IO;
 
 namespace MvcShopAdmin.Controllers
 {
@@ -83,20 +84,22 @@ namespace MvcShopAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product_Details product_Details)
         {
+            
+            product_Details.ProductImages = "http://mvcshopuploadimages.gear.host/Uploads/default.png";
+            product_Details.ProductStatus = 1;
+            product_Details.ProductOrder = 1;
+
             foreach (string file in Request.Files)
             {
                 var postedFile = Request.Files[file];
 
                 var res = UploadImgAsync(postedFile).ToString();
-                product_Details.ProductImages = res;
+                //product_Details.ProductImages = res;
+                var baseAddress = "http://mvcshopuploadimages.gear.host/Uploads/";
+                var imgUrl = Path.Combine(baseAddress, postedFile.FileName);
 
-
-                //System.Diagnostics.Debug.WriteLine(file);
-
-                //var fileName = postedFile.FileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
-                //var filePath = HttpContext.Server.MapPath("~/Uploads/" + fileName);
-
-                //postedFile.SaveAs(filePath);
+                product_Details.ProductImages = imgUrl;
+                
             }
             if (ModelState.IsValid)
             {

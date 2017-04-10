@@ -9,14 +9,10 @@ namespace Model.Framework
     [Table("OrderDetail")]
     public partial class OrderDetail
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
+
         public int Order_Id { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Product_Id { get; set; }
 
         public int? Quantity { get; set; }

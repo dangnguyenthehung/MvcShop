@@ -11,30 +11,27 @@ namespace MvcShop.Models
     public class CartModel : LayoutViewModel
     {
         CheckoutModel model = null;
-        public List<View_ProductDetails> itemList = new List<View_ProductDetails>();
+        public List<CartItem> itemList = new List<CartItem>();
 
         public CartModel()
         {
             model = new CheckoutModel();
         }
 
-        public List<View_ProductDetails> get_Item_Details(List<CartItem> listItem)
+        public void get_Item_Details(List<CartItem> listItem)
         {
-            var listID = getIdList(listItem);
-            List<View_ProductDetails> itemList = model.getItemInfo(listID);
-
-            return itemList;
+            itemList = model.getItemInfo(listItem);       
         }
 
-        private List<int> getIdList(List<CartItem> list)
-        {
-            List<int> listId = new List<int>();
-            foreach(var item in list)
-            {
-                listId.Add(item.ItemId);
-            }
+        //private List<int> getIdList(List<CartItem> list)
+        //{
+        //    List<int> listId = new List<int>();
+        //    foreach(var item in list)
+        //    {
+        //        listId.Add(item.ItemId);
+        //    }
 
-            return listId;
-        }
+        //    return listId;
+        //}
     }
 }

@@ -17,8 +17,7 @@ namespace MvcShop.Controllers
             List<CartItem> listItem = SelectedCartItem.ListProduct;
             CartModel model = new CartModel();
 
-            var itemList = model.get_Item_Details(listItem);
-            model.itemList = itemList;
+            model.get_Item_Details(listItem);           
 
             return View(model);
         }
@@ -31,9 +30,11 @@ namespace MvcShop.Controllers
             if (ProductId > 0)
             {
                 //var model = new CartModel();
-                CartItem item = new CartItem();
-                item.ItemId = ProductId;
-                item.Quantity = Quantity;
+                CartItem item = new CartItem
+                {
+                    ItemId = ProductId,
+                    Quantity = Quantity
+                };
 
                 var isAdded = SelectedCartItem.ListProduct.Find(i => i.ItemId == ProductId);
                 if (isAdded != null)
@@ -66,6 +67,14 @@ namespace MvcShop.Controllers
             
 
             return Json(text, JsonRequestBehavior.AllowGet); 
+        }
+
+        [HttpPost]
+        public void UpdateCartQuantity(int ProductId, int Quantity)
+        {
+            var cartList = (List<CartItem>)Session["CART_SESSION"];
+            var item = cartList.Find(i => i.ItemId == ProductId);
+            item.Quantity = Quantity;
         }
 
         [HttpPost]

@@ -19,13 +19,14 @@
     strOldPrice = strOldPrice.Replace(",", ".");
 }
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script>
     var AppUrlSettings = {
         AddToCartUrl: '@Url.Action("AddToCart","Cart")',
-        RemoveFromCartUrl: '@Url.Action("RemoveFromCart", "Cart")'
+        RemoveFromCartUrl: '@Url.Action("RemoveFromCart", "Cart")',
+        UpdateCartQuantityUrl: '@Url.Action("UpdateCartQuantity", "Cart")'
     }
 </script>
 

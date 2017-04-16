@@ -1,12 +1,15 @@
 ﻿@model MvcShop.Models.CartModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "View Cart";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    
 }
 <script>
     var AppUrlSettings = {
         AddToCartUrl: '@Url.Action("AddToCart","Cart")',
-        RemoveFromCartUrl: '@Url.Action("RemoveFromCart", "Cart")'
+        RemoveFromCartUrl: '@Url.Action("RemoveFromCart", "Cart")',
+        UpdateCartQuantityUrl: '@Url.Action("UpdateCartQuantity", "Cart")'
     }
 </script>
 <section id="cart_items">
@@ -32,21 +35,30 @@
                 <tbody>
                     @foreach (var item in Model.itemList)
                     {
+                        var item_bill = item.Price * item.Quantity;
+
+                        //var item_bill_str = String.Format("{0:n0}", item_bill);
+                        //item_bill_str = item_bill_str.Replace(",", ".");
+
+                        var strPrice = String.Format("{0:n0}", item.Price);
+                        strPrice = strPrice.Replace(",", ".");
+
                         <tr class="item_cell">
                             <td class="cart_product col-xs-3">
                                 <a href=""><img src="@Html.DisplayFor(i => item.ProductImages)" alt=""></a>
                             </td>
                             <td class="cart_description col-xs-2">
                                 
-                                <h4><a href="@Url.Action("Index","ProductDetails", new { id = item.Id })">
+                                <h4><a href="@Url.Action("Index","ProductDetails", new { id = item.ItemId})">
                                     @Html.DisplayFor(i => item.ProductCode)</a></h4>
                                 <p>@Html.DisplayFor(i => item.ProductName)</p>
                             </td>
-                            <td class="cart_price col-xs-2" data-price="@Html.DisplayFor(i => item.NewPrice)">
-                                <p>@Html.DisplayFor(i => item.NewPrice) đ</p>
+                            <td class="cart_price col-xs-2" data-price="@Html.DisplayFor(i => item.Price)">
+                                <p>@strPrice đ</p>
                             </td>
                             <td class="cart_quantity col-xs-1">
-                                <input class="cart_quantity_input" type="number" name="cart_item_quantity" value="1" autocomplete="off" size="2">
+                                @*<input class="cart_quantity_input" type="number" name="cart_item_quantity" value="1" autocomplete="off" size="2">*@
+                                @Html.EditorFor(i => item.Quantity, new { htmlAttributes = new { @class = "cart_quantity_input", @type = "number", @name = "cart_item_quantity", @min = 1 } })
                                 @*<div class="cart_quantity_button">
                                     
                                     <a class="cart_quantity_up" href="#"> + </a>
@@ -55,10 +67,10 @@
                                 </div>*@
                             </td>
                             <td class="cart_total col-xs-3">
-                                <p class="cart_total_price"><span class="value">@Html.DisplayFor(i => item.NewPrice)</span> đ</p>
+                                <p class="cart_total_price"><span class="value">@item_bill</span> đ</p>
                             </td>
                             <td class="cart_delete col-xs-1">
-                                <div class="cart_quantity_delete" data-productID="@Html.DisplayFor(i => item.Id)"><i class="fa fa-times"></i></div>
+                                <div class="cart_quantity_delete" data-productID="@Html.DisplayFor(i => item.ItemId)"><i class="fa fa-times"></i></div>
                                 @*<a class="cart_quantity_delete" href="#"><i class="fa fa-times"></i></a>*@
                             </td>
                         </tr>
@@ -79,7 +91,7 @@
         </div>
 
         <div class="to-delivery">
-            <a href="@Url.Action("Delivery","Cart")">
+            <a href="@Url.Action("Index","Checkout")">
                 Tiếp theo
             </a>
         </div>

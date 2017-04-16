@@ -1756,10 +1756,25 @@ h2.title {
     text-align: center;
     font-weight: bold;
 }
+.to-checkout-page {
+    float: right;
+    background-color: #3b5998;
+    transition: all 0.3s;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+}
+.to-checkout-page:hover {
+    background-color: #2980b9;
+}
+.to-checkout-page a {
+    color: white;
+    text-decoration: none;
+}
 .bg h2.title {
-  margin-right:0;
-  margin-left:0;
-  margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
 }
 
 .heading h3 {

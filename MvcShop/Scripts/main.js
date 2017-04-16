@@ -1,10 +1,10 @@
-/// <reference path="main.js" />
+﻿/// <reference path="main.js" />
 /*price range*/
 
  $('#sl2').slider();
 
 	var RGBChange = function() {
-	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
+        $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
 	};	
 		
 /*scroll to top*/
@@ -152,8 +152,26 @@ $( function quantity_changed()
         var price = $( this ).parents( ".item_cell" ).find( ".cart_price" ).attr( "data-price" );
 
         var total_price = quantity * price;
-        total = $( this ).parents( ".item_cell" ).find( ".cart_total_price" ).html( total_price );
+        total = $(this).parents(".item_cell").find(".cart_total_price > .value").html(total_price);
+         cart_bill();
     } )
     
 
-} )
+})
+
+
+function cart_bill() {
+    var total_bill = 0;
+
+    var arr = $(".item_cell .cart_total_price > .value").each(function () {
+        var money = parseInt($(this).html());
+        total_bill += money;
+    })
+
+    $(".cart_bill .cart_bill_total span").html(total_bill);
+};
+
+
+$(function () {
+    cart_bill();
+})    

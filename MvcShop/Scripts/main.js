@@ -122,6 +122,7 @@ $(document).ready(function(){
 	            //var url = '@Url.Action("LoadName","ChooseType")';
 	            var url = AppUrlSettings.AddToCartUrl;
                 var ID = $(this).attr("data-productID");
+                var quantity = $("input[name='quantity']").val();
 
 	            // edit selected element row id
 

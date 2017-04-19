@@ -14,10 +14,21 @@ namespace MvcShop.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            List<CartItem> listItem = SelectedCartItem.ListProduct;
+            //List<CartItem> listItem = new SelectedCartItem().ListProduct;
+            var sesionList = (List<CartItem>)Session["CART_SESSION"];
+
             CartModel model = new CartModel();
 
-            model.get_Item_Details(listItem);           
+            if (sesionList != null)
+            {
+                model.get_Item_Details(sesionList);
+            }
+            else
+            {
+                List<CartItem> list = new List<CartItem>();
+                model.itemList = list;
+            }
+            
 
             return View(model);
         }
@@ -27,45 +38,46 @@ namespace MvcShop.Controllers
         {
             int count = 0;
             string text = "";
+            List<CartItem> listItem = new List<CartItem>();
+            
             if (ProductId > 0)
             {
-                //var model = new CartModel();
                 CartItem item = new CartItem
                 {
                     ItemId = ProductId,
                     Quantity = Quantity
                 };
 
-                var isAdded = SelectedCartItem.ListProduct.Find(i => i.ItemId == ProductId);
-                if (isAdded != null)
-                {
-                    text = "Sản phẩm đã có trong giỏ hàng!";
-                    return Json(text, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    SelectedCartItem.ListProduct.Add(item);
-                }
+                var sesionList = new List<CartItem>();
                 
-                // SelectedCartItem.ListProduct is static, so in Session it will automaticaly update
-                // just need to add it into session at the first time
                 if (Session["CART_SESSION"] == null)
                 {
-                    Session.Add(CommonConstants.CART_SESSION, SelectedCartItem.ListProduct);
+                    listItem.Add(item);
+                    Session.Add(CommonConstants.CART_SESSION, listItem);
                     count = 1;
                     text = "Đã thêm vào giỏ hàng. Hiện có " + count + " sản phẩm";
                 }
                 else
                 {
-                    List<CartItem> newList = new List<CartItem>();
-                    newList = (List<CartItem>)Session["CART_SESSION"];
-                    count = newList.Count();
+                    sesionList = (List<CartItem>)Session["CART_SESSION"];
+
+                    var isAdded = sesionList.Find(i => i.ItemId == ProductId);
+                    if (isAdded != null)
+                    {
+                        text = "Sản phẩm đã có trong giỏ hàng!";
+                        return Json(text, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        sesionList.Add(item);
+                    }
+
+                    count = sesionList.Count();
 
                     text = "Đã thêm vào giỏ hàng. Hiện có " + count + " sản phẩm";
-                }
+                }                
             }
             
-
             return Json(text, JsonRequestBehavior.AllowGet); 
         }
 
@@ -82,24 +94,24 @@ namespace MvcShop.Controllers
         {
             int count = 0;
             string text = "";
+            var sesionList = (List<CartItem>)Session["CART_SESSION"];
+
             if (ProductId > 0)
             {
                 //var model = new CartModel();
                 
-                var itemToRemove = SelectedCartItem.ListProduct.SingleOrDefault(r => r.ItemId == ProductId);
+                var itemToRemove = sesionList.SingleOrDefault(r => r.ItemId == ProductId);
 
                 if (itemToRemove != null )
                 {
-                    SelectedCartItem.ListProduct.Remove(itemToRemove);
+                    sesionList.Remove(itemToRemove);
                 }
                 else
                 {
-                    text = "Có lỗi xảy ra! Vui lòng thử lại sau.";
+                    text = "Sản phẩm không có trong giỏ hàng!";
                     return Json(text, JsonRequestBehavior.AllowGet);
                 }
-
-                // SelectedCartItem.ListProduct is static, so in Session it will automaticaly update
-                // just need to add it into session at the first time
+                
                 if (Session["CART_SESSION"] == null)
                 {
                     text = "Giỏ hàng đang trống";
@@ -108,16 +120,13 @@ namespace MvcShop.Controllers
                 }
                 else
                 {
-                    List<CartItem> newList = new List<CartItem>();
-                    newList = (List<CartItem>)Session["CART_SESSION"];
-                    count = newList.Count();
+                    count = sesionList.Count();
                 }
             }
             text = "Đã xóa khỏi giỏ hàng. Hiện có " + count + " sản phẩm";
 
             return Json(text, JsonRequestBehavior.AllowGet);
-
-           
+            
         }
     }
 }

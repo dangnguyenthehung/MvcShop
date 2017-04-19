@@ -9,6 +9,6 @@ namespace MvcShop.Common
     [Serializable]
     public class SelectedCartItem
     {
-        public static List<CartItem> ListProduct = new List<CartItem>();
+        public List<CartItem> ListProduct { get; set; }
     }
 }

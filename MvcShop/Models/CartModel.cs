@@ -11,7 +11,7 @@ namespace MvcShop.Models
     public class CartModel : LayoutViewModel
     {
         CheckoutModel model = null;
-        public List<CartItem> itemList = new List<CartItem>();
+        public List<CartItem> itemList { get; set; }
 
         public CartModel()
         {

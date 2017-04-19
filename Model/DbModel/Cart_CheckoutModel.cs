@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Model.DbModel
 {
-    public class CheckoutModel
+    public class Cart_CheckoutModel
     {
         ShopdbContext context = null;
-        public CheckoutModel()
+        public Cart_CheckoutModel()
         {
             context = new ShopdbContext();
         }

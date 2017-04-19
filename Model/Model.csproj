@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbModel\CheckoutModel.cs" />
+    <Compile Include="DbModel\Cart_CheckoutModel.cs" />
     <Compile Include="DbModel\LayoutModel.cs" />
     <Compile Include="DbModel\ProductDetailsModel.cs" />
     <Compile Include="DbModel\UserModel.cs" />

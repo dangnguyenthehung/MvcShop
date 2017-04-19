@@ -1,4 +1,5 @@
 ﻿using Model.Object;
+using MvcShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,32 @@ namespace MvcShop.Controllers
         // GET: Checkout
         public ActionResult Index()
         {
-            var cartList = (List<CartItem>)Session["CART_SESSION"];
+            var sesionList = (List<CartItem>)Session["CART_SESSION"];
 
-            return View();
+            CartModel cartModel = new CartModel();
+
+            if (sesionList != null)
+            {
+                cartModel.get_Item_Details(sesionList);
+            }
+            else
+            {
+                List<CartItem> list = new List<CartItem>();
+                cartModel.itemList = list;
+            }
+
+            var model = new CheckoutModel
+            {
+                CartItems = cartModel.itemList
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Index(CheckoutModel model)
+        {
+
+            return RedirectToAction("Index","Home");
         }
     }
 }

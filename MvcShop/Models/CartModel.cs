@@ -10,12 +10,12 @@ namespace MvcShop.Models
 {
     public class CartModel : LayoutViewModel
     {
-        CheckoutModel model = null;
+        Cart_CheckoutModel model = null;
         public List<CartItem> itemList { get; set; }
 
         public CartModel()
         {
-            model = new CheckoutModel();
+            model = new Cart_CheckoutModel();
         }
 
         public void get_Item_Details(List<CartItem> listItem)

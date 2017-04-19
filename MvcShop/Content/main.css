@@ -1621,8 +1621,8 @@ h2.title {
   border-style: solid;
   border-color:transparent transparent transparent #3b5998;
   position: absolute;
-  top: 11px;
-  left:48px;
+  top: 10px;
+  left:80px;
 
 }
 
@@ -1959,7 +1959,6 @@ h2.title {
   padding: 2px 3px;
 }
 
-
 .register-req  {
   font-size: 14px;
   font-weight: 300;
@@ -1971,8 +1970,6 @@ h2.title {
 .register-req p {
   margin-bottom: 0
 }
-
-
 
 .shopper-info p, 
 .bill-to p, 
@@ -1991,37 +1988,22 @@ h2.title {
   margin-top: 20px;
 }
 
-
-.form-two, .form-one {
-  float: left;
-  width: 47%
+.form-checkout-info h4 {
+    padding-left: 15px;
 }
-
-
-.shopper-info > form > input, 
-.form-two > form > select, 
-.form-two > form > input, 
-.form-one > form > input {
-  background:#F0F0E9;
-  border: 0 none;
-  margin-bottom:10px;
-  padding: 10px;
-  width: 100%;
-  font-weight: 300
-}
-
-.form-two > form > select {
-  padding:10px 5px
-}
-
-.form-two {
-  margin-left: 5%
+.form-checkout-info input {
+    background: #F0F0E9;
+    border: 0 none;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    font-weight: 300
 }
 
 
 .order-message textarea {
-  font-size: 12px;
-  height: 335px;
+  font-size: 14px;
+  height: 140px;
   margin-bottom: 20px;
   padding: 15px 20px;
 }

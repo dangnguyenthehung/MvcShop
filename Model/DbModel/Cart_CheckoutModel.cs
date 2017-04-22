@@ -41,6 +41,12 @@ namespace Model.DbModel
 
         public void Create_Order(CheckoutInfo model)
         {
+            // create customer base on delivery info
+
+            // add to order table
+
+            // add to order details table
+
 
         }
     }

@@ -43,8 +43,8 @@ namespace MvcShop.Controllers
             var listThanhPho = helperModel.Get_ThanhPho();
             var listQuan = helperModel.Get_Quan();
 
-            ViewBag.ID_ThanhPho = new SelectList(listThanhPho, "ID", "Name");
-            ViewBag.ID_Quan = new SelectList(listQuan, "ID", "Name");
+            ViewBag.City_ID = new SelectList(listThanhPho, "Id", "Name");
+            ViewBag.District_ID = new SelectList(listQuan, "Id", "Name");
 
             return View(model);
         }
@@ -56,6 +56,16 @@ namespace MvcShop.Controllers
             helper.Create_Order(model.Info);
 
             return RedirectToAction("Index","Home");
+        }
+
+        [Route("Checkout/Get_Quan")]
+        public JsonResult Get_Quan(int ID_ThanhPho)
+        {            
+            var helperModel = new Get_SelectList();
+
+            var listQuan = helperModel.Get_Quan(ID_ThanhPho);
+
+            return Json(listQuan, JsonRequestBehavior.AllowGet);            
         }
     }
 }

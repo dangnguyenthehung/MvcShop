@@ -17,8 +17,8 @@ namespace Model.Framework
         [StringLength(20)]
         public string Tel { get; set; }
 
-        public int? Province_Id { get; set; }
+        public int? City_Id { get; set; }
 
-        public virtual Province Province { get; set; }
+        public virtual City City { get; set; }
     }
 }

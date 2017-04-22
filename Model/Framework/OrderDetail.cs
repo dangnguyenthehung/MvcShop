@@ -19,6 +19,8 @@ namespace Model.Framework
 
         public int? Price { get; set; }
 
+        public int? TotalPrice { get; set; }
+
         public virtual Order Order { get; set; }
 
         public virtual Product_Details Product_Details { get; set; }

@@ -209,6 +209,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Get_SelectList.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CheckoutModel.cs" />
     <Compile Include="Models\CompareModel.cs" />

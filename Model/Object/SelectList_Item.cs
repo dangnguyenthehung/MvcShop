@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model.Object
 {
-    public class CheckoutInfo
+    public class SelectList_Item
     {
-        public List<CartItem> CartItems { get; set; }
-
-        public BillingInfo BillingInfo { get; set; }
+        public string ID { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace MvcShop.Models
 
         public void get_Item_Details(List<CartItem> listItem)
         {
-            itemList = model.getItemInfo(listItem);       
+            itemList = model.GetItemInfo(listItem);       
         }
 
         //private List<int> getIdList(List<CartItem> list)

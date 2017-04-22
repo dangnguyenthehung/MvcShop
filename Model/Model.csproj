@@ -73,9 +73,11 @@
     <Compile Include="Framework\View_ShopProductInfo.cs" />
     <Compile Include="Object\BrandNumberProduct.cs" />
     <Compile Include="Object\CartItem.cs" />
+    <Compile Include="Object\BillingInfo.cs" />
     <Compile Include="Object\CheckoutInfo.cs" />
     <Compile Include="Object\LayoutProductType.cs" />
     <Compile Include="Object\MainProductType.cs" />
+    <Compile Include="Object\SelectList_Item.cs" />
     <Compile Include="Object\ShopProductInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

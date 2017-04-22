@@ -8,9 +8,7 @@ namespace MvcShop.Models
 {
     public class CheckoutModel
     {
-        public List<CartItem> CartItems { get; set; }
-
-        public CheckoutInfo CheckoutInfo { get; set; }
+        public CheckoutInfo Info { get; set; }
 
     }
 }

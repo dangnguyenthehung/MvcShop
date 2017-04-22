@@ -17,7 +17,7 @@ namespace Model.DbModel
             context = new ShopdbContext();
         }
          // trả về thông tin chi tiết mặt hàng khách hàng đặt
-        public List<CartItem> getItemInfo(List<CartItem> listItems)
+        public List<CartItem> GetItemInfo(List<CartItem> listItems)
         {
             //var listItems = new List<CartItem>();
 
@@ -37,6 +37,11 @@ namespace Model.DbModel
             }
             
             return listItems;
+        }
+
+        public void Create_Order(CheckoutInfo model)
+        {
+
         }
     }
 }

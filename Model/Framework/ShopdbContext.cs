@@ -130,5 +130,7 @@ namespace Model.Framework
                 .Property(e => e.ProductDimension)
                 .IsUnicode(false);
         }
+
+        public System.Data.Entity.DbSet<Model.Object.OrderItems> OrderItems { get; set; }
     }
 }

@@ -560,6 +560,7 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shop\ListProduct.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Checkout\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

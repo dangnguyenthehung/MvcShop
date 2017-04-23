@@ -17,9 +17,9 @@ namespace Model.Framework
 
         public int? Quantity { get; set; }
 
-        public int? Price { get; set; }
+        public double? Price { get; set; }
 
-        public int? TotalPrice { get; set; }
+        public double? TotalPrice { get; set; }
 
         public virtual Order Order { get; set; }
 

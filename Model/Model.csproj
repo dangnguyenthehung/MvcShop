@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DbModel\Cart_CheckoutModel.cs" />
     <Compile Include="DbModel\LayoutModel.cs" />
+    <Compile Include="DbModel\Orders_OrderDetailsModel.cs" />
     <Compile Include="DbModel\ProductDetailsModel.cs" />
     <Compile Include="DbModel\SelectListModel.cs" />
     <Compile Include="DbModel\UserModel.cs" />
@@ -80,6 +81,8 @@
     <Compile Include="Object\CheckoutInfo.cs" />
     <Compile Include="Object\LayoutProductType.cs" />
     <Compile Include="Object\MainProductType.cs" />
+    <Compile Include="Object\NewOrder.cs" />
+    <Compile Include="Object\OrderItems.cs" />
     <Compile Include="Object\SelectList_Item.cs" />
     <Compile Include="Object\ShopProductInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -71,5 +71,11 @@ namespace MvcShop.Controllers
 
             return Json(listQuan, JsonRequestBehavior.AllowGet);            
         }
+        [Route("Checkout/Success")]
+        public ActionResult Success()
+        {
+            ViewBag.Message = "";
+            return View();
+        }
     }
 }

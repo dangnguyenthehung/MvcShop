@@ -16,6 +16,28 @@ namespace MvcShop.Controllers
         // GET: Checkout
         public ActionResult Index()
         {
+            var model = new BillingInfo();
+
+            var helperModel = new Get_SelectList();
+
+            var listThanhPho = helperModel.Get_ThanhPho();
+            var listQuan = helperModel.Get_Quan();
+
+            ViewBag.City_ID = new SelectList(listThanhPho, "Id", "Name");
+            ViewBag.District_ID = new SelectList(listQuan, "Id", "Name");
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Index(BillingInfo info)
+        {
+            CheckoutModel model = new CheckoutModel() {
+                Info = new CheckoutInfo
+                {
+                    BillingInfo = info
+                }
+            };
+            // get Cart list items from sesion
             var sesionList = (List<CartItem>)Session["CART_SESSION"];
 
             CartModel cartModel = new CartModel();
@@ -30,30 +52,12 @@ namespace MvcShop.Controllers
                 cartModel.itemList = list;
             }
 
-            var model = new CheckoutModel()
-            {
-                Info = new CheckoutInfo()
-                {
-                    CartItems = cartModel.itemList
-                }
-            };
+            model.Info.CartItems = cartModel.itemList;
 
-            var helperModel = new Get_SelectList();
-
-            var listThanhPho = helperModel.Get_ThanhPho();
-            var listQuan = helperModel.Get_Quan();
-
-            ViewBag.City_ID = new SelectList(listThanhPho, "Id", "Name");
-            ViewBag.District_ID = new SelectList(listQuan, "Id", "Name");
-
-            return View(model);
-        }
-        [HttpPost]
-        public ActionResult Index(CheckoutModel model)
-        {
+            // create orders
             var helper = new Cart_CheckoutModel();
 
-            helper.Create_Order(model.Info);
+            helper.Create_Order_Infomation(model.Info);
 
             return RedirectToAction("Index","Home");
         }

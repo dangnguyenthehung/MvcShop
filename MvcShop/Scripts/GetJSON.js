@@ -11,14 +11,13 @@ var load_Quan = function (url, ID_ThanhPho) {
             if (index === 0) {
                 id_first_Quan_of_city = value.ID;
             }
-            $("#Quan").append($('<option></option>').text(value.Name).val(value.ID));
+            $("#Quan").append($('<option></option>').text(value.Name).val(value.Id));
         });
     });
 };
 
 $(function () {
     $("#ThanhPho").change(function () {
-        //var url = 'http://ganxa.net:8888/api/DangBaiAPI/Get_QuanThuocThanhPho';
 
         var url = AppUrlSetting.Get_Quan;
 

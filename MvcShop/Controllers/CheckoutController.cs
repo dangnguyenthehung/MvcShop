@@ -43,8 +43,11 @@ namespace MvcShop.Controllers
             var listThanhPho = helperModel.Get_ThanhPho();
             var listQuan = helperModel.Get_Quan();
 
-            ViewBag.ID_ThanhPho = new SelectList(listThanhPho, "ID", "Name");
-            ViewBag.ID_Quan = new SelectList(listQuan, "ID", "Name");
+            //ViewBag.ID_ThanhPho = new SelectList(listThanhPho, "ID", "Name");
+            //ViewBag.ID_Quan = new SelectList(listQuan, "ID", "Name");
+
+            ViewBag.City_ID = new SelectList(listThanhPho, "ID", "Name");
+            ViewBag.District_ID = new SelectList(listQuan, "ID", "Name");
 
             return View(model);
         }

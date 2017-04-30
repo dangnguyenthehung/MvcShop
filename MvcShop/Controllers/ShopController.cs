@@ -25,6 +25,7 @@ namespace MvcShop.Controllers
             ShopModel models = new ShopModel(page);
 
             ViewBag.PageTitle = "Trang " + page;
+            ViewBag.Page = page;
             
             
             return View(models);
@@ -40,6 +41,8 @@ namespace MvcShop.Controllers
             {
                 ViewBag.PageTitle = models.ListProduct[0].BrandName;
             }
+
+            ViewBag.Page = page;
             return View(models);
         }
 
@@ -53,6 +56,8 @@ namespace MvcShop.Controllers
             {
                 ViewBag.PageTitle = models.get_Type(typeId);
             }
+
+            ViewBag.Page = page;
             return View(models);
         }
 

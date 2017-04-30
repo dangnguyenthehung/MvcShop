@@ -1665,6 +1665,9 @@ h2.title {
   border-top: 0 none;
   vertical-align: inherit;
 }
+.cart_info table tr td img {
+    max-height: 120px;
+}
 
 
 #cart_items .cart_info .image {

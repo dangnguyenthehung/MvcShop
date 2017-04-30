@@ -20,9 +20,21 @@
     </div><!--features_items-->
     <div class="col-xs-12 pagination-container">
         <ul class="pagination">
-            <li class="active">@Html.ActionLink("1", "Brands", new { brandId = @ViewBag.Brand, page = 1 })</li>
+            @for (var i = 1; i <= 5; i++)
+            {
+                if (ViewBag.Page == i)
+                {
+                    <li class="active">@Html.ActionLink(i.ToString(), "Brands", new { brandId = @ViewBag.Brand, page = i })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink(i.ToString(), "Brands", new { brandId = @ViewBag.Brand, page = i })</li>
+                }
+            }
+
+            @*<li class="active">@Html.ActionLink("1", "Brands", new {  page = 1 })</li>
             <li>@Html.ActionLink("2", "Brands", new { brandId = @ViewBag.Brand, page = 2 })</li>
-            <li>@Html.ActionLink("3", "Brands", new { brandId = @ViewBag.Brand, page = 3 })</li>
+            <li>@Html.ActionLink("3", "Brands", new { brandId = @ViewBag.Brand, page = 3 })</li>*@
 
             <li><a href="">&raquo;</a></li>
         </ul>

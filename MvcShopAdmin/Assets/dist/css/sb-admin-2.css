@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 body {
-    background-color: #2c3e50;
+    background-color: #212121;
 }
 #wrapper {
   width: 100%;
@@ -23,7 +23,7 @@ body {
   }
 }
 .navbar-static-top {
-    background-color: #2c3e50;
+    background-color: #212121;
 }
 .navbar-top-links {
   margin-right: 0;
@@ -108,7 +108,7 @@ body {
         position: absolute;
         width: 200px;
         margin-top: 51px;
-        background-color: #2c3e50;
+        background-color: #212121;
     }
   .navbar-top-links .dropdown-messages,
   .navbar-top-links .dropdown-tasks,
@@ -446,4 +446,103 @@ table.dataTable thead .sorting:after {
 .form-padding-10 > .col-md-9 {
     padding-left: 10px;
     padding-right: 10px;
+}
+.navbar-default .navbar-brand {
+    color: white;
+}
+#side-menu li a {
+    height: 54px;
+    padding: 15px 10px;
+    font-size: 18px;
+    color: #bdc3c7;
+}
+#side-menu li a.active {
+    background-color: #2980b9;
+    color: #ecf0f1;
+}
+
+#side-menu li a:hover,
+#side-menu li a:focus {
+    background-color: #004D40;
+}
+th {
+    text-align: center;
+}
+.checkout-info .row {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+}
+.checkout-info label {
+    padding-top: 8px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.checkout-info .row .form-control {
+    border-radius: 2px;
+}
+.TotalMoney {
+    position: relative;
+}
+
+.currency {
+    position: absolute;
+    right: 30px;
+    top: 6px;
+    font-size: 16px;
+    z-index: 99;
+    font-style: italic;
+    color: #888;
+}
+.orderStatus {
+    color: #2980b9;
+}
+.OrderDetails .UpdateQuantity,
+.OrderDetails .DeleteItem {
+    color: white;
+    padding: 10px;
+    background-color: #16a085;
+    transition: all 0.3s;
+    border-radius: 2px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.OrderDetails .UpdateQuantity:hover {
+    text-decoration: none;
+    background-color: #03876D;
+}
+.OrderDetails .DeleteItem {
+    background-color: #e74c3c;
+    margin-left: 20px;
+    padding: 10px 20px;
+} 
+.OrderDetails .DeleteItem:hover {
+    text-decoration: none;
+    background-color: #c0392b;
+}
+.OrderDetails .VerifyOrder,
+.OrderDetails .DeleteOrder {
+    color: white;
+    padding: 15px 10px;
+    background-color: #2980b9;
+    transition: all 0.3s;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+}
+.OrderDetails .DeleteOrder {
+    background-color: #A70000;
+    position: relative;
+    top: 15px;
+    padding: 17px 10px;
+} 
+.OrderDetails .VerifyOrder:hover {
+    text-decoration: none;
+    background-color: #07507F;
+}
+.OrderDetails .DeleteOrder:hover {
+    text-decoration: none;
+    background-color: #CC0000;
 }

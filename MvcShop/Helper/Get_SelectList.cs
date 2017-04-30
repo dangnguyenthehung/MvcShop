@@ -1,4 +1,5 @@
-﻿using Model.Object;
+﻿using Model.DbModel;
+using Model.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +9,20 @@ namespace MvcShop.Helper
 {
     public class Get_SelectList
     {
-        public List<SelectList_Item> Get_ThanhPho (int ID_ThanhPho = 0 )
+        public List<SelectList_Item> Get_ThanhPho ()
         {
-            List<SelectList_Item> list = new List<SelectList_Item>();
+            var dbModel = new SelectListModel();
+
+            List<SelectList_Item> list = dbModel.Get_ThanhPho();
 
             return list;
         }
 
-        public List<SelectList_Item> Get_Quan (int ID_Quan = 0)
-        {
-            List<SelectList_Item> list = new List<SelectList_Item>();
+        public List<SelectList_Item> Get_Quan (int ID_ThanhPho = 1)
+        {            
+            var dbModel = new SelectListModel();
+
+            List<SelectList_Item> list = dbModel.Get_Quan(ID_ThanhPho);
 
             return list;
 

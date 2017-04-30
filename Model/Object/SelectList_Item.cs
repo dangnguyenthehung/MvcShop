@@ -8,7 +8,7 @@ namespace Model.Object
 {
     public class SelectList_Item
     {
-        public string ID { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }

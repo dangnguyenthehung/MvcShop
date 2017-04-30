@@ -44,4 +44,7 @@ $(function() {
             break;
         }
     }
+
+    //$(".cart_bill .cart_bill_total span").html(total_bill.toLocaleString('de-DE'));
+
 });

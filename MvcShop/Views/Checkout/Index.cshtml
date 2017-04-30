@@ -1,9 +1,16 @@
-﻿@model MvcShop.Models.CheckoutModel
+﻿@model Model.Object.BillingInfo
 @{
     ViewBag.Title = "Check out";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+<script>
+    var AppUrlSetting = {
+            Get_Quan: '@Url.Action("Get_Quan","Checkout")'
+        }
+</script>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/GetJSON.js"></script>
 
 <section id="cart_items">
     <div class="container">
@@ -56,25 +63,32 @@
                         <div class="col-xs-12 col-md-4 clearfix">
                             <div class="bill-to">
                                 <div class="">
-                                    @Html.TextBoxFor(m => m.Info.BillingInfo.Customer_Name, new { @placeholder = "Họ tên" })
-                                    @Html.TextBoxFor(m => m.Info.BillingInfo.Customer_Email, new { @placeholder = "Email" })
-                                    @Html.TextBoxFor(m => m.Info.BillingInfo.Customer_Phone, new { @placeholder = "Số điện thoại" })
+                                    @Html.TextBoxFor(m => m.Customer_Name, new { @placeholder = "Họ tên" })
+                                    @Html.TextBoxFor(m => m.Customer_Email, new { @placeholder = "Email" })
+                                    @Html.TextBoxFor(m => m.Customer_Phone, new { @placeholder = "Số điện thoại" })
                                 </div>
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <div class="bill-to">
                                 <div class="">
-                                    @Html.TextBoxFor(m => m.Info.BillingInfo.City_ID, new { @placeholder = "Thành phố" })
-                                    @Html.TextBoxFor(m => m.Info.BillingInfo.District_ID, new { @placeholder = "Quận" })
-                                    @Html.TextBoxFor(m => m.Info.BillingInfo.Delivery_Address, new { @placeholder = "Địa chỉ" })
+                                    @Html.DropDownList("City_ID", null, htmlAttributes: new { @class = "form-control", @id = "ThanhPho" })
+                                    @Html.DropDownList("District_ID", null, htmlAttributes: new { @class = "form-control", @placeholder = "Quận", @id = "Quan" })
+                                    @Html.TextBoxFor(m => m.Delivery_Address, new { @placeholder = "Địa chỉ" })
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-4">
                             <div class="order-message">
-                                @Html.TextAreaFor(m => m.Info.BillingInfo.Notes, new { @placeholder = "Ghi chú", @rows = "7" })
+                                @Html.TextAreaFor(m => m.Notes, new { @placeholder = "Ghi chú", @rows = "7" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="checkout-submit col-xs-6 col-md-2">
+                                <button type="submit">
+                                    Tiến hành đặt hàng
+                                </button>
                             </div>
                         </div>
                     }

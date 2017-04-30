@@ -1759,20 +1759,34 @@ h2.title {
     text-align: center;
     font-weight: bold;
 }
-.to-checkout-page {
+.to-checkout-page,
+.checkout-submit {
     float: right;
     background-color: #3b5998;
     transition: all 0.3s;
     font-size: 18px;
     padding: 10px;
     text-align: center;
+    margin-bottom: 15px;
 }
 .to-checkout-page:hover {
     background-color: #2980b9;
 }
+.checkout-submit {
+    background-color: #16a085;
+}
+.checkout-submit:hover {
+    background-color: #03876D;
+}
 .to-checkout-page a {
     color: white;
     text-decoration: none;
+}
+.checkout-submit button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 .bg h2.title {
     margin-right: 0;
@@ -1994,13 +2008,16 @@ h2.title {
 .form-checkout-info h4 {
     padding-left: 15px;
 }
-.form-checkout-info input {
+.form-checkout-info input,
+.form-checkout-info select {
     background: #F0F0E9;
     border: 0 none;
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
-    font-weight: 300
+    font-weight: 300;
+    height: 40px;
+    border-radius: 1px;
 }
 
 

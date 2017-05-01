@@ -26,6 +26,39 @@ namespace Model.DbModel
             return list;
         }
 
+        // get number of product
+        public int Get_Count_Product_All()
+        {
+            var number = context.Database.SqlQuery<int>("Sp_Get_Count_Product_All").SingleOrDefault();
+            // mock data
+            //return 220;
+            return number;
+
+        }
+
+        public int Get_Count_Product_Brand(int Brand_Id)
+        {
+            object[] SqlParams =
+            {
+                new SqlParameter("@Brand_Id",Brand_Id)
+            };
+            var number = context.Database.SqlQuery<int>("Sp_Get_Count_Product_Brand @Brand_Id", SqlParams).SingleOrDefault();
+            // mock data
+            //return 220;
+            return number;
+        }
+
+        public int Get_Count_Product_Type(int Type_Id)
+        {
+            object[] SqlParams =
+            {
+                new SqlParameter("@Type_Id",Type_Id)
+            };
+            var number = context.Database.SqlQuery<int>("Sp_Get_Count_Product_Type @Type_Id", SqlParams).SingleOrDefault();
+            // mock data
+            //return 220;
+            return number;
+        }
         //public int Login(string UserName, string Password)
         //{
         //    object[] SqlParams =

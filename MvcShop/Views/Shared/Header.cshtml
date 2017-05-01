@@ -85,18 +85,9 @@
                             @*<li><a href="index.html" class="active">Home</a></li>*@
                             <li>@Html.ActionLink("TRANG CHỦ", "Index", "Home")</li>
                             <li>@Html.ActionLink("KHUYẾN MÃI", "Index", "Blog")</li>
-                            <li class="dropdown">
-                                @Html.ActionLink("CỬA HÀNG", "Index", "Shop")
-                                <i class="fa fa-angle-down"></i>
-                                <ul role="menu" class="sub-menu">
-                                    <li>@Html.ActionLink("Cửa hàng", "Index", "Shop")</li>
-                                    
-                                    <li>@Html.ActionLink("Thanh toán", "Index", "Checkout")</li>
-                                    <li>@Html.ActionLink("Giỏ hàng", "Index", "Cart")</li>
-                                </ul>
-                            </li>
-                            
-                            <li><a href="@Url.Action("Index", "error")">404</a></li>
+                            <li>@Html.ActionLink("CỬA HÀNG", "Index", "Shop")</li>
+                            <li>@Html.ActionLink("SO SÁNH", "Index", "Compare")</li>
+
                             <li><a href="@Url.Action("Index", "ContactUs")">LIÊN HỆ</a></li>
                         </ul>
                     </div>

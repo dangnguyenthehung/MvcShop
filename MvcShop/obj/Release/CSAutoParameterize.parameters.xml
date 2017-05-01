@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="ShopdbContext-Web.config Connection String" description="ShopdbContext Connection String used in web.config by the application to access the database." defaultValue="data source=mssql4.gear.host;initial catalog=mvcshop;persist security info=True;user id=mvcshop;password=Gl7g~75_Fy56;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="F:\\Project\\MvcShop\\MvcShop\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ShopdbContext']/@connectionString" />
+  <parameter name="ShopdbContext-Web.config Connection String" description="ShopdbContext Connection String used in web.config by the application to access the database." defaultValue="data source=mssql5.gear.host;initial catalog=shopvoinuoc;persist security info=True;user id=shopvoinuoc;password=Us6W9!8qBo_7;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Project\\MvcShop\\MvcShop\\MvcShop\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ShopdbContext']/@connectionString" />
   </parameter>
 </parameters>

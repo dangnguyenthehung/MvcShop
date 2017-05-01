@@ -1,10 +1,10 @@
-/// <reference path="main.js" />
+﻿/// <reference path="main.js" />
 /*price range*/
 
  $('#sl2').slider();
 
 	var RGBChange = function() {
-	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
+        $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
 	};	
 		
 /*scroll to top*/
@@ -121,8 +121,9 @@ $(document).ready(function(){
 	        {
 	            //var url = '@Url.Action("LoadName","ChooseType")';
 	            var url = AppUrlSettings.AddToCartUrl;
-	            var ID = $( this ).attr( "data-productID" );
-	            var quantity = $( "input[name='quantity']" ).val();;
+                var ID = $(this).attr("data-productID");
+                var quantity = $("input[name='quantity']").val();
+
 	            // edit selected element row id
 
 	            var request = $( function ()
@@ -140,20 +141,57 @@ $(document).ready(function(){
 
 	        } );
 	    } );
-	
-	    
-
+    
 } );
 $( function quantity_changed()
 {
     $( ".cart_quantity_input" ).change( function ()
     {
-        var quantity = $( this ).val();
+        var ID = $(this).parents(".item_cell").find(".cart_quantity_delete").attr("data-productID");
+        var quantity = parseInt($(this).val());
         var price = $( this ).parents( ".item_cell" ).find( ".cart_price" ).attr( "data-price" );
 
         var total_price = quantity * price;
-        total = $( this ).parents( ".item_cell" ).find( ".cart_total_price" ).html( total_price );
+        total = $(this).parents(".item_cell").find(".cart_total_price > .value").html(total_price);
+
+        // ajax call to update cart quantity method
+        UpdateCartQuantity(ID, quantity);
+
+        // update bill
+        cart_bill();
     } )
     
 
-} )
+})
+
+function UpdateCartQuantity(ID, quantity) {
+
+    var url = AppUrlSettings.UpdateCartQuantityUrl;
+
+    var request = $(function () {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { ProductId: ID, Quantity: quantity },
+            success: function (data) {
+                console.log("update quantity success");
+            }
+        });
+    });
+};
+
+function cart_bill() {
+    var total_bill = 0;
+
+    var arr = $(".item_cell .cart_total_price > .value").each(function () {
+        var money = parseInt($(this).html());
+        total_bill += money;
+    })
+
+    $(".cart_bill .cart_bill_total span").html(total_bill.toLocaleString('de-DE'));
+};
+
+
+$(function () {
+    cart_bill();
+})    

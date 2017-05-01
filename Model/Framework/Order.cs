@@ -31,6 +31,9 @@ namespace Model.Framework
 
         public int? OrderStatus { get; set; }
 
+        [StringLength(1000)]
+        public string Notes { get; set; }
+
         public virtual City City { get; set; }
 
         public virtual Customer Customer { get; set; }

@@ -49,8 +49,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a#scrollUp {
-  bottom: 0px;
-  right: 10px;
+  bottom: 5px;
+  right: 5px;
   padding: 5px 10px;
   background: #3b5998;
   color: #FFF;
@@ -861,6 +861,7 @@ h2.title {
     height: 250px;
     text-align: center;
     overflow: hidden;
+    margin: auto;
 }
 .single-products {
   position: relative;
@@ -998,21 +999,21 @@ h2.title {
   background-color: #efefef;
 }
 
-.choose ul li a {
-  color: #B3AFA8;
-  font-family: 'Roboto', sans-serif;
-  font-size: 13px;
-  padding-left: 0;
-  padding-right: 0;
+.choose .add-to-compare {
+    color: #B3AFA8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.choose ul li a i{
-	margin-right:5px;
+.choose .add-to-compare i {
+    margin-right: 5px;
 }
 
-.choose ul li a:hover{
-	background:none;
-	color:#3b5998;
+.choose .add-to-compare:hover {
+    background: none;
+    color: #3b5998;
 }
 
 .category-tab {
@@ -2639,7 +2640,14 @@ h2.title {
     background-color: cyan;
     font-size: 18px;
 }
-
+.compare img {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+}
+.compare_addToCart .add-to-cart {
+    margin-bottom: 0px;
+}
 /*
 .banner 
 {
@@ -2651,7 +2659,56 @@ h2.title {
 }
 */
 .item_cell,
-.cart_menu  {
+.cart_menu {
     text-align: center;
 }
+.button-call-mobile {
+    position: fixed;
+    left: 5px;
+    bottom: 5px;
+    padding: 5px;
+    border-radius: 50%;
+    height: 43px;
+    width: 43px;
+    background-color: #27ae60;
+    text-align: center;
+    -webkit-animation: callButton 4s ease infinite;
+    -moz-animation: callButton 4s ease infinite;
+    animation: callButton 4s ease infinite;
+}
 
+.button-call-mobile .col-xs-12 {
+    padding: 0;
+}
+.button-call-mobile a {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+}
+@keyframes callButton {
+    0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg); /* Safari */
+        -ms-transform: rotate(0deg); /* IE 9 */
+    }
+    5% {
+        transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg); /* Safari */
+        -ms-transform: rotate(-20deg); /* IE 9 */
+    }
+    10% {
+        transform: rotate(20deg);
+        -webkit-transform: rotate(20deg); /* Safari */
+        -ms-transform: rotate(20deg); /* IE 9 */
+    }
+    15% {
+        transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg); /* Safari */
+        -ms-transform: rotate(-20deg); /* IE 9 */
+    }
+    20%, 100% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg); /* Safari */
+        -ms-transform: rotate(0deg); /* IE 9 */
+    }
+}

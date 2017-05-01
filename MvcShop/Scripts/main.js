@@ -68,6 +68,29 @@ $(document).ready(function(){
 	        }
 	    } );
 
+    // add to compare
+        $(function () {
+            $(".add-to-compare").click(function () {
+                //var url = '@Url.Action("LoadName","ChooseType")';
+                var url = AppUrlSettings.AddToCompareUrl;
+                var ID = $(this).attr("data-productID");
+                // edit selected element row id
+
+                var request = $(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: { product_Id: ID},
+                        success: function (data) {
+                            alert(data);
+                        }
+                    });
+                });
+
+            });
+        });
+
+    // add to cart
 	    $( function ()
 	    {
 	        $( ".add-to-cart" ).click( function ()

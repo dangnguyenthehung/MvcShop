@@ -71,7 +71,6 @@
     <Compile Include="Framework\ShopdbContext.cs" />
     <Compile Include="Framework\ShopInfo.cs" />
     <Compile Include="Framework\Support.cs" />
-    <Compile Include="Framework\sysdiagram.cs" />
     <Compile Include="Framework\User.cs" />
     <Compile Include="Framework\View_ProductDetails.cs" />
     <Compile Include="Framework\View_ShopProductInfo.cs" />

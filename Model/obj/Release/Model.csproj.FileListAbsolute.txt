@@ -7,3 +7,13 @@ F:\Project\MvcShop\Model\bin\Release\EntityFramework.xml
 F:\Project\MvcShop\Model\bin\Release\EntityFramework.SqlServer.xml
 F:\Project\MvcShop\Model\obj\Release\Model.dll
 F:\Project\MvcShop\Model\obj\Release\Model.pdb
+D:\Project\MvcShop\MvcShop\Model\bin\Release\Model.dll.config
+D:\Project\MvcShop\MvcShop\Model\bin\Release\Model.dll
+D:\Project\MvcShop\MvcShop\Model\bin\Release\Model.pdb
+D:\Project\MvcShop\MvcShop\Model\bin\Release\EntityFramework.dll
+D:\Project\MvcShop\MvcShop\Model\bin\Release\EntityFramework.SqlServer.dll
+D:\Project\MvcShop\MvcShop\Model\bin\Release\EntityFramework.xml
+D:\Project\MvcShop\MvcShop\Model\bin\Release\EntityFramework.SqlServer.xml
+D:\Project\MvcShop\MvcShop\Model\obj\Release\Model.csprojResolveAssemblyReference.cache
+D:\Project\MvcShop\MvcShop\Model\obj\Release\Model.dll
+D:\Project\MvcShop\MvcShop\Model\obj\Release\Model.pdb

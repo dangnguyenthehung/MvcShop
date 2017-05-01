@@ -2,13 +2,13 @@
 @{
     string status = "Còn hàng";
 }
-<script>
+@*<script>
     var AppUrlSettings = {
         AddToCartUrl: '@Url.Action("AddToCart","Cart")',
         RemoveFromCartUrl: '@Url.Action("RemoveFromCart", "Cart")',
         UpdateCartQuantityUrl: '@Url.Action("UpdateCartQuantity", "Cart")'
     }
-</script>
+</script>*@
     @foreach (var item in Model.ListProduct)
     {
         string formattedPrice = item.formattedPrice();
@@ -50,10 +50,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href=""><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>
-                    </ul>
+                <div class="choose text-center">
+                    <div class="btn add-to-compare" data-productID="@Html.DisplayFor(m => item.Id)">
+                        <i class="fa fa-plus-square"></i>Thêm vào so sánh
+                    </div>
                 </div>
             </div>
         </div>

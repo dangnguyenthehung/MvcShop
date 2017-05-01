@@ -89,7 +89,7 @@
                 @*<img src="images/product-details/new.jpg" class="newarrival" alt="" />*@
                 <h2>@Html.DisplayFor(model => Model.Details.ProductName)</h2>
                 <p>Mã sản phẩm: @Html.DisplayFor(model => Model.Details.ProductCode)</p>
-                <div><img src="images/product-details/rating.png" alt="rating" /></div>
+                @*<div><img src="images/product-details/rating.png" alt="rating" /></div>*@
                 <span>
                     <span id="price">@strPrice <sup class="currency">đ</sup></span> 
                     <label>Số lượng:</label>
@@ -116,7 +116,7 @@
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#details" data-toggle="tab">Chi tiết</a></li>
-                <li><a href="#reviews" data-toggle="tab">Nhận xét (5)</a></li>
+                @*<li><a href="#reviews" data-toggle="tab">Nhận xét (5)</a></li>*@
             </ul>
         </div>
         <div class="tab-content">
@@ -170,8 +170,8 @@
                 
 
             </div>
-            
-            <div class="tab-pane fade" id="reviews">
+            <!-- Nhận xét -->
+            @*<div class="tab-pane fade" id="reviews">
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-xs-12">
@@ -210,8 +210,8 @@
                     </div>
                     
                 </div>
-            </div>
-
+            </div>*@
+            <!-- end nhận xét-->
         </div>
     </div><!--/category-tab-->
 

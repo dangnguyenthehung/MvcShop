@@ -20,11 +20,59 @@
     </div><!--features_items-->
     <div class="col-xs-12 pagination-container">
         <ul class="pagination">
-            <li class="active">@Html.ActionLink("1", "Brands", new { brandId = @ViewBag.Brand, page = 1 })</li>
+            @{
+                var count_product = ViewBag.Count;
+                var total_number_of_pages = (count_product / 21) + 1;
+                var begin_page = 1;
+                var end_page = 5;
+
+                if (total_number_of_pages < 5)
+                {
+                    begin_page = 1;
+                    end_page = total_number_of_pages;
+                }
+                else
+                {
+                    begin_page = ViewBag.Page;
+                    if ((begin_page + 5) > total_number_of_pages)
+                    {
+                        begin_page = total_number_of_pages - 5;
+                        end_page = total_number_of_pages;
+                    }
+                    else
+                    {
+                        end_page = begin_page + 5;
+                    }
+                }
+
+                if (begin_page > 1)
+                {
+                    <li>@Html.ActionLink("<<", "Brands", new { brandId = @ViewBag.Brand, page = begin_page - 1 })</li>
+                }
+
+                for (var i = begin_page; i <= end_page; i++)
+                {
+                    if (ViewBag.Page == i)
+                    {
+                        <li class="active">@Html.ActionLink(i.ToString(), "Brands", new { brandId = @ViewBag.Brand, page = i })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink(i.ToString(), "Brands", new { brandId = @ViewBag.Brand, page = i })</li>
+                    }
+                }
+                if (end_page < total_number_of_pages)
+                {
+                    <li>@Html.ActionLink(">>", "Brands", new { brandId = @ViewBag.Brand, page = end_page + 1 })</li>
+                }
+
+            }
+
+            @*<li class="active">@Html.ActionLink("1", "Brands", new {  page = 1 })</li>
             <li>@Html.ActionLink("2", "Brands", new { brandId = @ViewBag.Brand, page = 2 })</li>
             <li>@Html.ActionLink("3", "Brands", new { brandId = @ViewBag.Brand, page = 3 })</li>
 
-            <li><a href="">&raquo;</a></li>
+            <li><a href="">&raquo;</a></li>*@
         </ul>
     </div>
 </div>

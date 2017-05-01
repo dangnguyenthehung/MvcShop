@@ -2,7 +2,14 @@
 @{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-
+<script>
+    var AppUrlSettings = {
+        AddToCartUrl: '@Url.Action("AddToCart","Cart")',
+        RemoveFromCartUrl: '@Url.Action("RemoveFromCart", "Cart")',
+        UpdateCartQuantityUrl: '@Url.Action("UpdateCartQuantity", "Cart")',
+        AddToCompareUrl: '@Url.Action("AddToCompare", "Compare")'
+    }
+</script>
     <div class="container body-content">
         @Html.Action("Slider")
         <section>
@@ -13,7 +20,7 @@
                 </div>
             </div>
         </section> 
-        
+        @Html.Partial("CallButton")
         
         
     </div>

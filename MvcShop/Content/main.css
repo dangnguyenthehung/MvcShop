@@ -2712,3 +2712,6 @@ h2.title {
         -ms-transform: rotate(0deg); /* IE 9 */
     }
 }
+.sort_form {
+    margin-bottom: 10px;
+}

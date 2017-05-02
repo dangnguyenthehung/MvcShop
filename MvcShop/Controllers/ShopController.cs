@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Model.Object;
+using MvcShop.Common;
 
 namespace MvcShop.Controllers
 {
@@ -32,8 +34,47 @@ namespace MvcShop.Controllers
             ViewBag.PageTitle = "Trang " + page;
             ViewBag.Page = page;
             ViewBag.Count = count_product_all;
+
+            var list_sort_type = new List<Sort_Type>()
+            {
+                new Sort_Type{Sort_Name = "Mới nhất", Value = (int)CommonConstants.Sort_Type.ID_DESC},
+                new Sort_Type{Sort_Name = "Cũ nhất", Value = (int)CommonConstants.Sort_Type.ID_ASC},
+                new Sort_Type{Sort_Name = "Giá tăng dần", Value = (int)CommonConstants.Sort_Type.Price_ASC},
+                new Sort_Type{Sort_Name = "Giá giảm dần", Value = (int)CommonConstants.Sort_Type.Price_DESC}
+            };
+            int current_sort = 2; // 2: ID_DESC = mới nhất
+            if (Session[CommonConstants.SORT_SESSION] != null)
+            {
+                current_sort = (int)Session[CommonConstants.SORT_SESSION];
+            }
             
+            ViewBag.sort_Type = new SelectList(list_sort_type, "Value", "Sort_Name", current_sort);
+
             return View(models);
+        }
+        // receive sort from user
+        [HttpPost]
+        public ActionResult Page_Sort(int sort_Type)
+        {
+            Session[CommonConstants.SORT_SESSION] = sort_Type;
+
+            return RedirectToAction("Pages", new { page = 1 });
+        }
+
+        [HttpPost]
+        public ActionResult Brand_Sort(int brandId, int sort_Type)
+        {
+            Session[CommonConstants.SORT_SESSION] = sort_Type;
+
+            return RedirectToAction("Brands", new { brandId, page = 1 });
+        }
+
+        [HttpPost]
+        public ActionResult Type_Sort(int typeId, int sort_Type)
+        {
+            Session[CommonConstants.SORT_SESSION] = sort_Type;
+
+            return RedirectToAction("Types", new { typeId, page = 1 });
         }
 
         [HttpGet]
@@ -53,6 +94,23 @@ namespace MvcShop.Controllers
 
             ViewBag.Page = page;
             ViewBag.Count = count_product_brand;
+            ViewBag.Brand = brandId;
+
+            // sort part
+            var list_sort_type = new List<Sort_Type>()
+            {
+                new Sort_Type{Sort_Name = "Mới nhất", Value = (int)CommonConstants.Sort_Type.ID_DESC},
+                new Sort_Type{Sort_Name = "Cũ nhất", Value = (int)CommonConstants.Sort_Type.ID_ASC},
+                new Sort_Type{Sort_Name = "Giá tăng dần", Value = (int)CommonConstants.Sort_Type.Price_ASC},
+                new Sort_Type{Sort_Name = "Giá giảm dần", Value = (int)CommonConstants.Sort_Type.Price_DESC}
+            };
+            int current_sort = 2; // 2: ID_DESC = mới nhất
+            if (Session[CommonConstants.SORT_SESSION] != null)
+            {
+                current_sort = (int)Session[CommonConstants.SORT_SESSION];
+            }
+
+            ViewBag.sort_Type = new SelectList(list_sort_type, "Value", "Sort_Name", current_sort);
 
             return View(models);
         }
@@ -74,6 +132,23 @@ namespace MvcShop.Controllers
 
             ViewBag.Page = page;
             ViewBag.Count = count_product_type;
+            ViewBag.Type = typeId;
+
+            // sort part
+            var list_sort_type = new List<Sort_Type>()
+            {
+                new Sort_Type{Sort_Name = "Mới nhất", Value = (int)CommonConstants.Sort_Type.ID_DESC},
+                new Sort_Type{Sort_Name = "Cũ nhất", Value = (int)CommonConstants.Sort_Type.ID_ASC},
+                new Sort_Type{Sort_Name = "Giá tăng dần", Value = (int)CommonConstants.Sort_Type.Price_ASC},
+                new Sort_Type{Sort_Name = "Giá giảm dần", Value = (int)CommonConstants.Sort_Type.Price_DESC}
+            };
+            int current_sort = 2; // 2: ID_DESC = mới nhất
+            if (Session[CommonConstants.SORT_SESSION] != null)
+            {
+                current_sort = (int)Session[CommonConstants.SORT_SESSION];
+            }
+
+            ViewBag.sort_Type = new SelectList(list_sort_type, "Value", "Sort_Name", current_sort);
 
             return View(models);
         }

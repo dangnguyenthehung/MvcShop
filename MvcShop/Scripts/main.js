@@ -215,6 +215,12 @@ function cart_bill() {
 };
 
 
-$(function () {
-    cart_bill();
-})    
+ $(function() {
+     cart_bill();
+});
+
+ $(function() {
+     $(".sort_form form select").change(function() {
+         $(".sort_form form").submit();
+     });
+ });

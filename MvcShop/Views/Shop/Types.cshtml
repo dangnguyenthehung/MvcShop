@@ -12,6 +12,19 @@
     <div class="features_items">
         <!--features_items-->
         <h2 class="title text-center">@ViewBag.PageTitle</h2>
+    
+        <div class="col-xs-12 col-md-3 col-md-offset-9 sort_form">
+            <div class="row">
+                <div class="col-xs-12">
+                    @using (Html.BeginForm("Type_Sort", "Shop", new RouteValueDictionary { { "typeID", ViewBag.Type } }, FormMethod.Post))
+                    {
+                        @Html.DropDownList("sort_Type")
+                    }
+                </div>
+            </div>
+            
+        </div>
+
         @{
             MvcShop.Models.ShopModel partialModel = Model;
             Html.RenderPartial("ListProduct", partialModel);

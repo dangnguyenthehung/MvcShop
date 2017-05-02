@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MvcShop.Common;
 
 namespace MvcShop.Models
 {
@@ -42,21 +43,73 @@ namespace MvcShop.Models
         }
         private List<ShopProductInfo> get_all(int page)
         {
-            List<ShopProductInfo> contextList = context.getDetails_All();
+            var contextList = new List<ShopProductInfo>();
+            // Kiểm tra sort hiện tại - không có: get mặc định; có: get theo sort
+            if (HttpContext.Current.Session[CommonConstants.SORT_SESSION] == null)
+            {
+                contextList = context.getDetails_All();
+            }
+            else
+            {
+                try
+                {
+                    var sort_Type = (int)HttpContext.Current.Session[CommonConstants.SORT_SESSION];
+                    contextList = context.getDetails_All(sort_Type);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
             
             return pagination(contextList, page);
         }
 
         private List<ShopProductInfo> get_list_brand(int brandId, int page)
         {
-            List<ShopProductInfo> contextList = context.getDetails_Brand(brandId);
+            var contextList = new List<ShopProductInfo>();
+            // Kiểm tra sort hiện tại - không có: get mặc định; có: get theo sort
+            if (HttpContext.Current.Session[CommonConstants.SORT_SESSION] == null)
+            {
+                contextList = context.getDetails_Brand(brandId);
+            }
+            else
+            {
+                try
+                {
+                    var sort_Type = (int)HttpContext.Current.Session[CommonConstants.SORT_SESSION];
+                    contextList = context.getDetails_Brand(brandId, sort_Type);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
 
-            return pagination(contextList,page);
+            return pagination(contextList, page);
+
         }
 
         private List<ShopProductInfo> get_list_type(int typeId, int page)
         {
-            List<ShopProductInfo> contextList = context.getDetails_Type(typeId);
+            var contextList = new List<ShopProductInfo>();
+            // Kiểm tra sort hiện tại - không có: get mặc định; có: get theo sort
+            if (HttpContext.Current.Session[CommonConstants.SORT_SESSION] == null)
+            {
+                contextList = context.getDetails_Type(typeId);
+            }
+            else
+            {
+                try
+                {
+                    var sort_Type = (int)HttpContext.Current.Session[CommonConstants.SORT_SESSION];
+                    contextList = context.getDetails_Type(typeId, sort_Type);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
 
             return pagination(contextList, page);
         }

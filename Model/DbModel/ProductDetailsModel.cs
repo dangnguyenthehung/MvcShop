@@ -28,33 +28,100 @@ namespace Model.DbModel
             return list;
         }
 
-        // get all product details list
-        public List<ShopProductInfo> getDetails_All()
+        // get all product details list - Shop - Pages page
+        public List<ShopProductInfo> getDetails_All(int sort_Type = 0)
         {
+            var list = new List<ShopProductInfo>();
+            try
+            {
+                if (sort_Type == 0)
+                {
+                    list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetShopProductInfo").ToList();
+                }
+                else
+                {
+                    object[] SqlParams =
+                    {
+                        new SqlParameter("@Sort_Type", sort_Type)
+                    };
+                    list = context.Database
+                        .SqlQuery<ShopProductInfo>("Sp_GetShopProductInfo_Sort @Sort_Type", SqlParams)
+                        .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
             
-            var list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetShopProductInfo").ToList();
             return list;
         }
 
         // get product details list by brand id
-        public List<ShopProductInfo> getDetails_Brand(int id)
+        public List<ShopProductInfo> getDetails_Brand(int id, int sort_Type = 0)
         {
-            object[] SqlParams = 
+            var list = new List<ShopProductInfo>();
+            try
             {
-                new SqlParameter("@id",id)
-            };
-            var list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetBrandProductInfo @id", SqlParams).ToList();
+                if (sort_Type == 0)
+                {
+                    object[] SqlParams =
+                    {
+                        new SqlParameter("@id",id)
+                    };
+
+                    list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetBrandProductInfo @id", SqlParams).ToList();
+                }
+                else
+                {
+                    object[] SqlParams =
+                    {
+                        new SqlParameter("@id",id),
+                        new SqlParameter("@Sort_Type",sort_Type)
+                    };
+                    list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetBrandProductInfo_Sort @id, @Sort_Type", SqlParams).ToList();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            
             return list;
         }
 
         // get product details list by type id
-        public List<ShopProductInfo> getDetails_Type(int id)
+        public List<ShopProductInfo> getDetails_Type(int id, int sort_Type = 0)
         {
-            object[] SqlParams =
+            var list = new List<ShopProductInfo>();
+            try
             {
-                new SqlParameter("@id",id)
-            };
-            var list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetTypeProductInfo @id", SqlParams).ToList();
+                if (sort_Type == 0)
+                {
+                    object[] SqlParams =
+                    {
+                        new SqlParameter("@id",id)
+                    };
+
+                    list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetTypeProductInfo @id", SqlParams).ToList();
+                }
+                else
+                {
+                    object[] SqlParams =
+                    {
+                        new SqlParameter("@id",id),
+                        new SqlParameter("@Sort_Type",sort_Type)
+                    };
+                    list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetTypeProductInfo_Sort @id, @Sort_Type", SqlParams).ToList();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+
             return list;
         }
 

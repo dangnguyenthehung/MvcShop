@@ -84,6 +84,7 @@
     <Compile Include="Object\OrderItems.cs" />
     <Compile Include="Object\SelectList_Item.cs" />
     <Compile Include="Object\ShopProductInfo.cs" />
+    <Compile Include="Object\Sort_Type.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

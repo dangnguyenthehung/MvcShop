@@ -224,3 +224,14 @@ function cart_bill() {
          $(".sort_form form").submit();
      });
  });
+
+
+ $(function () {
+     $(".btn-price-range").click(function () {
+         var range = $(".tooltip-inner").html();
+
+         $(".price-range-form input[name='range']").val(range);
+
+         $(".price-range-form form").submit();
+     });
+ });

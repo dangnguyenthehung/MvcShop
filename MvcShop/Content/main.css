@@ -805,11 +805,24 @@ h2.title:before{
   border: 1px solid #F7F7F0;
   border-radius: 4px;
   box-shadow: none;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   min-height: 20px;
   padding: 35px;
+  padding-bottom: 10px;
+}
+.price-range-form {
+    margin-bottom: 25px;
+}
+.btn-price-range {
+    background-color: #3b5998;
+    color: white;
+    cursor: pointer;
 }
 
+.btn-price-range:hover {
+    background-color: #3b5198;
+    color: white;
+}
 
 .tooltip-inner {
   background-color: #3b5998;

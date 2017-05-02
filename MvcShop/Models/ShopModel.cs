@@ -61,6 +61,15 @@ namespace MvcShop.Models
                     System.Diagnostics.Debug.WriteLine(ex.Message);
                 }
             }
+
+            // nếu có lọc khoảng giá
+            if (HttpContext.Current.Session[CommonConstants.CURRENT_PRICE_RANGE_SORT] != null)
+            {
+                if ((bool) HttpContext.Current.Session[CommonConstants.CURRENT_PRICE_RANGE_SORT])
+                {
+                    contextList = Sort_Price_Range(contextList);
+                }
+            }
             
             return pagination(contextList, page);
         }
@@ -83,6 +92,15 @@ namespace MvcShop.Models
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
+
+            // nếu có lọc khoảng giá
+            if (HttpContext.Current.Session[CommonConstants.CURRENT_PRICE_RANGE_SORT] != null)
+            {
+                if ((bool)HttpContext.Current.Session[CommonConstants.CURRENT_PRICE_RANGE_SORT])
+                {
+                    contextList = Sort_Price_Range(contextList);
                 }
             }
 
@@ -111,9 +129,40 @@ namespace MvcShop.Models
                 }
             }
 
+            // nếu có lọc khoảng giá
+            if (HttpContext.Current.Session[CommonConstants.CURRENT_PRICE_RANGE_SORT] != null)
+            {
+                if ((bool)HttpContext.Current.Session[CommonConstants.CURRENT_PRICE_RANGE_SORT])
+                {
+                    contextList = Sort_Price_Range(contextList);
+                }
+            }
+
             return pagination(contextList, page);
         }
 
+        // lọc khoảng giá 
+        private List<ShopProductInfo> Sort_Price_Range(List<ShopProductInfo> source_list)
+        {
+            if (HttpContext.Current.Session[CommonConstants.PRICE_RANGE_MIN] == null)
+            {
+                return source_list;
+            }
+
+            if (HttpContext.Current.Session[CommonConstants.PRICE_RANGE_MAX] == null)
+            {
+                return source_list;
+            }
+
+            var range_min = (int)HttpContext.Current.Session[CommonConstants.PRICE_RANGE_MIN];
+            var range_max = (int)HttpContext.Current.Session[CommonConstants.PRICE_RANGE_MAX];
+
+            var list = source_list.Where(item => (item.NewPrice >= range_min && item.NewPrice <= range_max)).ToList();
+
+            return list;
+        }
+
+        // lấy số lượng phần tử cho mỗi trang
         private List<ShopProductInfo> pagination(List<ShopProductInfo> contextList, int page)
         {
             int item_per_page = 21;

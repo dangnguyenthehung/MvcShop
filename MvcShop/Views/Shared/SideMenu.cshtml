@@ -1,4 +1,5 @@
-﻿@model MvcShop.Models.LayoutViewModel
+﻿@using MvcShop.Common
+@model MvcShop.Models.LayoutViewModel
 <div class="col-sm-3">
     <div class="left-sidebar">
         <h2>Sản phẩm</h2>
@@ -184,16 +185,40 @@
                 </ul>
             </div>
         </div><!--/brands_products-->*@
+        @{
+            var range_min = 1000000;
+            var range_max = 30000000;
+
+            if (Session[CommonConstants.PRICE_RANGE_MIN] != null)
+            {
+                range_min = (int)Session[CommonConstants.PRICE_RANGE_MIN];
+            }
+
+            if (Session[CommonConstants.PRICE_RANGE_MAX] != null)
+            {
+                range_max = (int)Session[CommonConstants.PRICE_RANGE_MAX];
+            }
 
         <div class="price-range">
             <!--price-range-->
             <h2>Khoảng giá</h2>
             <div class="well">
-                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="60000000" data-slider-step="5" data-slider-value="[1000000,30000000]" id="sl2"><br />
+                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="60000000" data-slider-step="5" data-slider-value="[@range_min,@range_max]" id="sl2"><br />
                 <b>0 đ</b> <b class="pull-right">60.000.000 đ</b>
             </div>
+            <div class="price-range-form col-xs-12 clearfix">
+                @using (Html.BeginForm("Price_range_filter", "Shop"))
+                {
+                    <div class="hidden">
+                        @Html.TextBox("range")
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-6">
+                        <button type="button" class="btn btn-price-range">Tìm kiếm</button>    
+                    </div>
+                }
+            </div>
         </div><!--/price-range-->
-
+        }
         <div class="shipping text-center">
             <!--shipping-->
             <img src="~/images//home/shipping.jpg" alt="" />

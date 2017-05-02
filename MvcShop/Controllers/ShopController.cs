@@ -16,6 +16,9 @@ namespace MvcShop.Controllers
         public ActionResult Index()
         {
             int defaultPage = 1;
+
+            Session[CommonConstants.CURRENT_ROUTE_ID] = 1; // default
+            
             ViewBag.PageTitle = "Cửa hàng";
             //ShopModel model = new ShopModel(defaultPage);
             return RedirectToAction("Pages", new { page = defaultPage });
@@ -24,6 +27,8 @@ namespace MvcShop.Controllers
         [HttpGet]
         public ActionResult Pages(int page)
         {
+            Session[CommonConstants.CURRENT_ROUTE] = (int)CommonConstants.Shop_Route.Pages;
+
             //string action = "page";
             var temp_Model = new LayoutModel();
             var count_product_all = temp_Model.Get_Count_Product_All();
@@ -80,6 +85,9 @@ namespace MvcShop.Controllers
         [HttpGet]
         public ActionResult Brands(int brandId, int page)
         {
+            Session[CommonConstants.CURRENT_ROUTE] = (int)CommonConstants.Shop_Route.Brands;
+            Session[CommonConstants.CURRENT_ROUTE_ID] = brandId;
+
             // count number of product
             var temp_Model = new LayoutModel();
             var count_product_brand = temp_Model.Get_Count_Product_Brand(brandId);
@@ -118,6 +126,9 @@ namespace MvcShop.Controllers
         [HttpGet]
         public ActionResult Types(int typeId, int page)
         {
+            Session[CommonConstants.CURRENT_ROUTE] = (int)CommonConstants.Shop_Route.Types;
+            Session[CommonConstants.CURRENT_ROUTE_ID] = typeId;
+
             // count number of product
             var temp_Model = new LayoutModel();
             var count_product_type = temp_Model.Get_Count_Product_Type(typeId);
@@ -163,6 +174,64 @@ namespace MvcShop.Controllers
         public PartialViewResult Slider()
         {
             return PartialView();
+        }
+
+        public ActionResult Price_range_filter(string range)
+        {
+            var split_range = range.Split(':');
+            int range_min; // default: 0
+            int range_max; // default: 0
+
+            bool result_min = int.TryParse(split_range[0], out range_min);
+
+            bool result_max = int.TryParse(split_range[1], out range_max);
+
+            if (!result_max)
+            {
+                // error
+                range_max = 600000000;
+            }
+
+            Session[CommonConstants.CURRENT_PRICE_RANGE_SORT] = true;
+
+            Session[CommonConstants.PRICE_RANGE_MIN] = range_min;
+            Session[CommonConstants.PRICE_RANGE_MAX] = range_max;
+
+            if (Session[CommonConstants.CURRENT_ROUTE] == null)
+            {
+                Session[CommonConstants.CURRENT_ROUTE] = (int)CommonConstants.Shop_Route.Pages;
+            }
+
+            int current_route_id;
+
+            if (Session[CommonConstants.CURRENT_ROUTE_ID] != null)
+            {
+                current_route_id = (int)Session[CommonConstants.CURRENT_ROUTE_ID];
+            }
+            else
+            {
+                current_route_id = 1;
+            }
+            
+            // if current page is Shop -> pages
+            if ((int)Session[CommonConstants.CURRENT_ROUTE] == (int)CommonConstants.Shop_Route.Pages)
+            {
+                return RedirectToAction("Pages", new {page = 1});
+            }
+
+            // if current page is Shop -> brands
+            if ((int)Session[CommonConstants.CURRENT_ROUTE] == (int)CommonConstants.Shop_Route.Brands)
+            {
+                return RedirectToAction("Brands", new { brandId = current_route_id, page = 1 });
+            }
+
+            // if current page is Shop -> Types
+            if ((int)Session[CommonConstants.CURRENT_ROUTE] == (int)CommonConstants.Shop_Route.Types)
+            {
+                return RedirectToAction("Types", new { typeId = current_route_id ,page = 1 });
+            }
+
+            return RedirectToAction("Pages", new { page = 1 });
         }
     }
 }

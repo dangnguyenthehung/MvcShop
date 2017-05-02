@@ -1,12 +1,3 @@
-F:\Project\MvcShop\Model\bin\Release\Model.dll.config
-F:\Project\MvcShop\Model\bin\Release\Model.dll
-F:\Project\MvcShop\Model\bin\Release\Model.pdb
-F:\Project\MvcShop\Model\bin\Release\EntityFramework.dll
-F:\Project\MvcShop\Model\bin\Release\EntityFramework.SqlServer.dll
-F:\Project\MvcShop\Model\bin\Release\EntityFramework.xml
-F:\Project\MvcShop\Model\bin\Release\EntityFramework.SqlServer.xml
-F:\Project\MvcShop\Model\obj\Release\Model.dll
-F:\Project\MvcShop\Model\obj\Release\Model.pdb
 D:\Project\MvcShop\MvcShop\Model\bin\Release\Model.dll.config
 D:\Project\MvcShop\MvcShop\Model\bin\Release\Model.dll
 D:\Project\MvcShop\MvcShop\Model\bin\Release\Model.pdb

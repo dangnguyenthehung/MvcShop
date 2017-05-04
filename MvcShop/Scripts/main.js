@@ -67,7 +67,33 @@ $(document).ready(function(){
 
 	        }
 	    } );
-
+    // notification style
+    $.notify.addStyle('addSuccess', {
+        html: "<div><span data-notify-text/></div>",
+        classes: {
+            base: {
+                "white-space": "nowrap",
+                "background-color": "#1abc9c",
+                "padding": "10px 15px",
+                "color": "#fff",
+                "border-radius": "5px",
+                "font-size":"16px"
+            }
+        }
+        });
+    $.notify.addStyle('addError', {
+        html: "<div><span data-notify-text/></div>",
+        classes: {
+            base: {
+                "white-space": "nowrap",
+                "background-color": "#e74c3c",
+                "padding": "10px 15px",
+                "color": "#fff",
+                "border-radius": "5px",
+                "font-size": "16px"
+            }
+        }
+    });
     // add to compare
         $(function () {
             $(".add-to-compare").click(function () {
@@ -82,7 +108,7 @@ $(document).ready(function(){
                         url: url,
                         data: { product_Id: ID},
                         success: function (data) {
-                            alert(data);
+                            $.notify(data, { style: 'addSuccess'});
                         }
                     });
                 });
@@ -108,8 +134,12 @@ $(document).ready(function(){
 	                    url: url,
 	                    data: { ProductId: ID, Quantity: quantity },
 	                    success: function ( data )
-	                    {
-	                        alert( data );
+                        {
+                            if (data.indexOf("!") >= 0) {
+                                $.notify(data, { style: 'addError' });    
+                            } else {
+                                $.notify(data, { style: 'addSuccess' });    
+                            }
 	                    }
 	                } );
 	            } );
@@ -130,7 +160,7 @@ $(document).ready(function(){
                         url: url,
                         data: { ProductId: ID },
                         success: function (data) {
-                            alert(data);
+                            $.notify(data, { style: 'addSuccess' });
                         }
                     });
                 });
@@ -157,7 +187,11 @@ $(document).ready(function(){
 	                    data: { ProductId: ID, Quantity: quantity },
 	                    success: function ( data )
 	                    {
-	                        alert( data );
+	                        if (data.indexOf("!") >= 0) {
+                                $.notify(data, { style: 'addError'});
+	                        } else {
+	                            $.notify(data, { style: 'addSuccess' });
+	                        }
 	                    }
 	                } );
 	            } );

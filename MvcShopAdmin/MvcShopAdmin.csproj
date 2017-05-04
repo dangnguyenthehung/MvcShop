@@ -154,15 +154,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\func_SyncResult.cs" />
     <Compile Include="Models\OrderDetailsModel.cs" />
     <Compile Include="Models\OrdersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Audio\new-message.mp3" />
     <Content Include="Assets\dist\css\sb-admin-2.css" />
     <Content Include="Assets\dist\css\sb-admin-2.min.css" />
     <Content Include="Assets\dist\js\sb-admin-2.js" />
     <Content Include="Assets\dist\js\sb-admin-2.min.js" />
+    <Content Include="Assets\dist\js\SyncResult.js" />
     <Content Include="Assets\vendor\bootstrap-social\bootstrap-social.css" />
     <Content Include="Assets\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Assets\vendor\bootstrap\css\bootstrap.min.css" />
@@ -347,7 +350,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

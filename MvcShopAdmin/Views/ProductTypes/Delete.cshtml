@@ -1,0 +1,62 @@
+﻿@model Model.Framework.ProductType
+
+@{
+    ViewBag.Title = "Xóa loại SP";
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
+}
+
+<div id="page-wrapper">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="text-center">Xóa loại sản phẩm</h3>
+            <h4>Bạn có chắc muốn xóa?</h4>
+
+            <div class="panel panel-default">
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="col-xs-12 col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.Label("Tên hãng", htmlAttributes: new { @class = "control-label col-md-6" })
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.TypeName, new { @class = "col-md-6" })
+                            </dd>
+                            
+                            <dt>
+                                @Html.Label("Thuộc nhóm", htmlAttributes: new { @class = "control-label col-md-6" })
+                            </dt>
+
+                            <dd>
+                                @ViewBag.parentTypeName
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Xóa" class="btn btn-danger" />
+                            </div>
+                        }
+                    </div>
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+    <div>
+        @Html.ActionLink("Quay lại", "Index")
+    </div>
+</div>
+

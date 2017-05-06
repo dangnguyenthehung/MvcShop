@@ -1,9 +1,0 @@
-F:\Project\MvcShop\Model\bin\Debug\Model.dll.config
-F:\Project\MvcShop\Model\bin\Debug\Model.dll
-F:\Project\MvcShop\Model\bin\Debug\Model.pdb
-F:\Project\MvcShop\Model\bin\Debug\EntityFramework.dll
-F:\Project\MvcShop\Model\bin\Debug\EntityFramework.SqlServer.dll
-F:\Project\MvcShop\Model\bin\Debug\EntityFramework.xml
-F:\Project\MvcShop\Model\bin\Debug\EntityFramework.SqlServer.xml
-F:\Project\MvcShop\Model\obj\Debug\Model.dll
-F:\Project\MvcShop\Model\obj\Debug\Model.pdb

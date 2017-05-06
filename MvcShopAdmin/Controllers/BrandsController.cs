@@ -20,20 +20,20 @@ namespace MvcShopAdmin.Controllers
             return View(db.Brands.ToList());
         }
 
-        // GET: Brands/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Brand brand = db.Brands.Find(id);
-            if (brand == null)
-            {
-                return HttpNotFound();
-            }
-            return View(brand);
-        }
+        //// GET: Brands/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Brand brand = db.Brands.Find(id);
+        //    if (brand == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(brand);
+        //}
         
         // POST: Brands/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -76,7 +76,7 @@ namespace MvcShopAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,BrandName,BrandContent,BrandImages,BrandOrder")] Brand brand)
+        public ActionResult Edit([Bind(Include = "Id,BrandName")] Brand brand)
         {
             if (ModelState.IsValid)
             {

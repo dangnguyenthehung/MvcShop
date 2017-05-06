@@ -1,4 +1,7 @@
-﻿.form-control {
+﻿.add-form .form-control {
+    margin-bottom: 5px;
+}
+.form-control {
     border-radius: 2px;
 }
 .btn {
@@ -13,5 +16,5 @@
     margin: auto;
 }
 .submit-container {
-    margin-top: 10px;
+    margin-top: 5px;
 }

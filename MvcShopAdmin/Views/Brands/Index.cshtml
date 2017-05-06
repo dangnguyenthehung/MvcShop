@@ -9,16 +9,13 @@
 <div id="page-wrapper">
     <div class="col-xs-12">
         <h2 class="page-header text-center">Danh sách hãng</h2>
-        <p>
-            <a href="@Url.Action("Create", "Brands")"><i class="fa fa-plus fa-fw"></i> Thêm mới</a>
-        </p>
     </div>
 
     <div class="row">
         <div class="col-xs-12 col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Tổng hợp danh sách
+                    
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -43,8 +40,8 @@
                                     @Html.DisplayFor(modelItem => item.BrandName)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
                                 </td>
                             </tr>
                         }

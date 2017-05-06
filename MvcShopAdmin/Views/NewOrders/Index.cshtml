@@ -70,10 +70,10 @@
                                     @Html.DisplayFor(modelItem => item.Notes)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { Order_Id = item.Order_Id }) |
+                                    @*@Html.ActionLink("Chỉnh sửa", "Edit", new { Order_Id = item.Order_Id }) |*@
                                     @Html.ActionLink("Chi tiết", "Details", new { Order_Id = item.Order_Id }) 
                                     <br />
-                                    @Html.ActionLink("Hoàn tất", "Complete", new { Order_Id = item.Order_Id }) |
+                                    @*@Html.ActionLink("Hoàn tất", "Complete", new { Order_Id = item.Order_Id }) |*@
                                     @Html.ActionLink("Hủy", "Delete", new { Order_Id = item.Order_Id })
                                 </td>
                             </tr>
@@ -89,5 +89,8 @@
     </div>
     <!-- /.row -->
 
+    <div>
+        @Html.ActionLink("Quay lại", "Index")
+    </div>
 </div>
 

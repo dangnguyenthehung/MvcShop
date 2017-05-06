@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Model.Framework.ProductType>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="col-xs-12">
+        <h2 class="page-header text-center">Phân loại</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table class="table list-product-table text-center">
+                        <tr>
+                            <th>
+                                ID Loại
+                            </th>
+                            <th>
+                                Tên Loại
+                            </th>
+
+                            <th>
+                                Thuộc Nhóm
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            string parentTypeName = "";
+                            if (item.ParentTypeId != 0)
+                            {
+                                var parentType = Model.SingleOrDefault(i => i.Id == item.ParentTypeId);
+                                if (parentType != null)
+                                {
+                                    parentTypeName = parentType.TypeName;    
+                                }
+                            }
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TypeName)
+                                </td>
+                                <td>
+                                    @parentTypeName
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <!-- /.table-responsive -->
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+        <div class="col-xs-12 col-lg-4 add-form">
+            <div class="col-xs-12">
+                @using (Html.BeginForm("Create", "ProductTypes", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="col-xs-12">
+                        @Html.TextBox("TypeName", "", new { @placeholder = "Tên loại", @class = "form-control" })
+                    </div>
+                    <div class="col-xs-12">
+                        @Html.DropDownList("ParentTypeId", null, new { @placeholder = "Thuộc nhóm", @class = "form-control" })
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-md-offset-3 submit-container">
+                        <button type="submit" class="col-xs-12 btn btn-info">Thêm mới</button>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- /.col-lg-8 -->
+    </div>
+    <!-- /.row -->
+
+</div>
+

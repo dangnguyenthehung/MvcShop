@@ -1,0 +1,59 @@
+﻿@model Model.Framework.ProductType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeImages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeImages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentTypeId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,9 @@
-﻿
+﻿.form-control {
+    border-radius: 2px;
+}
+.btn {
+    border-radius: 2px; 
+}
 .list-product-table .img-container {
     text-align: center;
 }
@@ -6,4 +11,7 @@
     max-width: 100px;
     max-height: 100px;
     margin: auto;
+}
+.submit-container {
+    margin-top: 10px;
 }

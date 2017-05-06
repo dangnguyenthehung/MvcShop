@@ -34,28 +34,26 @@ namespace MvcShopAdmin.Controllers
             }
             return View(brand);
         }
-
-        // GET: Brands/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
+        
         // POST: Brands/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,BrandName,BrandContent,BrandImages,BrandOrder")] Brand brand)
+        public ActionResult Create(string BrandName)
         {
             if (ModelState.IsValid)
             {
-                db.Brands.Add(brand);
+                var newBrand = new Brand
+                {
+                    BrandName = BrandName
+                };
+                db.Brands.Add(newBrand);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(brand);
+            return View("Index");
         }
 
         // GET: Brands/Edit/5

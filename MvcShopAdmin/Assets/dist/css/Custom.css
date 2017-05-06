@@ -1,0 +1,9 @@
+﻿
+.list-product-table .img-container {
+    text-align: center;
+}
+.list-product-table .img-container .image {
+    max-width: 100px;
+    max-height: 100px;
+    margin: auto;
+}

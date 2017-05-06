@@ -39,7 +39,7 @@ namespace MvcShopAdmin.Controllers
 
         // syncing result - realtime syncing
         [HttpGet]
-        public ActionResult SyncResult()
+        public JsonResult SyncResult()
         {
             var dbModel = new Orders_OrderDetailsModel();
             List<NewOrder> data = dbModel.Get_New_Orders();

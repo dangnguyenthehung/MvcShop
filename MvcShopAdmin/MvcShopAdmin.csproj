@@ -161,8 +161,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Audio\new-message.mp3" />
+    <Content Include="Assets\dist\css\custom.css" />
     <Content Include="Assets\dist\css\sb-admin-2.css" />
     <Content Include="Assets\dist\css\sb-admin-2.min.css" />
+    <Content Include="Assets\dist\js\notify.js" />
     <Content Include="Assets\dist\js\sb-admin-2.js" />
     <Content Include="Assets\dist\js\sb-admin-2.min.js" />
     <Content Include="Assets\dist\js\SyncResult.js" />

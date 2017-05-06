@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout_Admin.cshtml";
 }
-
 <div id="page-wrapper">
     <div class="col-xs-12">
         <h2 class="page-header text-center">Danh sách mặt hàng</h2>
@@ -12,46 +11,57 @@
             <a href="@Url.Action("Create", "Product_Details")"><i class="fa fa-plus fa-fw"></i> Thêm mới</a>
         </p>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    DataTables Advanced Tables
+                    Tổng hợp danh sách
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table list-product-table text-center">
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.Brand.BrandName)
+                                Hãng
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ProductType.TypeName)
+                                Loại
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ProductCode)
+                                Mã SP
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.OldPrice)
+                                Giá Hãng
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.NewPrice)
+                                Giá Bán
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ProductImages)
+                                Hình Ảnh
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.HeatType)
+                                Nóng/lạnh
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ProductStatus)
+                                Trạng thái
                             </th>
                             <th></th>
                         </tr>
 
                         @foreach (var item in Model)
                         {
+                            string heatType = "Lạnh";
+                            string status = "Còn hàng";
+                            if (item.HeatType == 1)
+                            {
+                                heatType = "Nóng lạnh";
+                            }
+                            if (item.ProductStatus == 0)
+                            {
+                                status = "Hết hàng";
+                            }
+
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Brand.BrandName)
@@ -68,14 +78,17 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.NewPrice)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProductImages)
+                                <td class="img-container">
+                                    @*<img class="image" src="@Html.DisplayFor(modelItem => item.ProductImages)"/>*@
+
+                                    <img class="image" src="http://ganxa.net:7777/Uploads/citygarden1.jpg" />
+
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.HeatType)
+                                    @heatType
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ProductStatus)
+                                    @status
                                 </td>
                                 <td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -97,5 +110,5 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-    
+
 </div>

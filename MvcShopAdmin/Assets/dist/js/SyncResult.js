@@ -8,7 +8,7 @@
 
 }
 $(function () {
-    setInterval("SyncResult()", 1000 * 3); // 3s gửi request một lần
+    setInterval("SyncResult()", 1000 * 30); // 3s gửi request một lần
 });
 
 function showResult(data) {
@@ -32,7 +32,33 @@ function play_sound() {
     new Audio(baseUrl + audio[0]).play();
 
 };
-
+// notification style
+$.notify.addStyle('addSuccess', {
+    html: "<div><span data-notify-text/></div>",
+    classes: {
+        base: {
+            "white-space": "nowrap",
+            "background-color": "#1abc9c",
+            "padding": "10px 15px",
+            "color": "#fff",
+            "border-radius": "5px",
+            "font-size": "16px"
+        }
+    }
+});
+$.notify.addStyle('addError', {
+    html: "<div><span data-notify-text/></div>",
+    classes: {
+        base: {
+            "white-space": "nowrap",
+            "background-color": "#e74c3c",
+            "padding": "10px 15px",
+            "color": "#fff",
+            "border-radius": "5px",
+            "font-size": "16px"
+        }
+    }
+});
 function show_notification(noti) {
     // new noti
     $.notify(noti, { style: 'addSuccess' });

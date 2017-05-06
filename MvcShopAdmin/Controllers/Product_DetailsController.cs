@@ -110,6 +110,7 @@ namespace MvcShopAdmin.Controllers
             
             ViewBag.Brand_Id = new SelectList(db.Brands, "Id", "BrandName", product_Details.Brand_Id);
             ViewBag.ProductType_Id = new SelectList(db.ProductTypes, "Id", "TypeName", product_Details.ProductType_Id);
+
             return View(product_Details);
         }
 
@@ -151,6 +152,15 @@ namespace MvcShopAdmin.Controllers
             {
                 return HttpNotFound();
             }
+
+            var heatType = new List<SelectListItem>
+            {
+                new SelectListItem{ Text = "Lạnh", Value = "0"},
+                new SelectListItem{ Text = "Nóng lạnh", Value = "1"}
+            };
+
+            ViewBag.HeatType = new SelectList(heatType, "Value", "Text");
+
             ViewBag.Brand_Id = new SelectList(db.Brands, "Id", "BrandName", product_Details.Brand_Id);
             ViewBag.ProductType_Id = new SelectList(db.ProductTypes, "Id", "TypeName", product_Details.ProductType_Id);
             return View(product_Details);

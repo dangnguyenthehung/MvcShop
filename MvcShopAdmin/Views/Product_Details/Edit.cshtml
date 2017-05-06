@@ -5,11 +5,114 @@
     Layout = "~/Views/Shared/Layout_Admin.cshtml";
 }
 
-<h2>Edit</h2>
+
 <div id="page-wrapper">
+
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Tables</h1>
+            <div class="panel panel-default">
+
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+                    @using (Html.BeginForm("Edit", "Product_Details", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4><b>Sửa sản phẩm</b></h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group row form-padding-10">
+                                <div class="col-md-2">
+                                    @Html.DropDownList("ProductType_Id", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ProductType_Id, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-2">
+                                    @Html.DropDownList("Brand_Id", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Brand_Id, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-2">
+                                    @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mã sản phẩm" } })
+                                    @Html.ValidationMessageFor(model => model.ProductCode, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Tên sản phẩm" } })
+                                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row form-padding-10">
+                                <div class="col-md-2">
+                                    @Html.DropDownList("HeatType", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.HeatType, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-2">
+                                    @Html.EditorFor(model => model.ProductWeight, new { htmlAttributes = new { @class = "form-control", @placeholder = "Trọng lượng" } })
+                                    @Html.ValidationMessageFor(model => model.ProductWeight, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-2">
+                                    @Html.EditorFor(model => model.ProductDimension, new { htmlAttributes = new { @class = "form-control", @placeholder = "Kích thước" } })
+                                    @Html.ValidationMessageFor(model => model.ProductDimension, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.OldPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Giá hãng" } })
+                                    @Html.ValidationMessageFor(model => model.OldPrice, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.NewPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Giá bán" } })
+                                    @Html.ValidationMessageFor(model => model.NewPrice, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group row form-padding-10">
+                                <div class="col-md-9">
+                                    @Html.TextAreaFor(model => model.ProductDetail, new { @class = "form-control", @rows = 5, @placeholder = "Chi tiết" })
+                                    @Html.ValidationMessageFor(model => model.ProductDetail, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-3">
+                                    @Html.TextBoxFor(model => model.ProductImages, new { type = "file" })
+                                    @Html.ValidationMessageFor(model => model.ProductImages, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row form-padding-10">
+                                <div class="col-xs-12">
+                                    <input type="submit" value="Cập nhật" class="col-xs-12 col-md-2 pull-right btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+
+
+                    <!-- /.table-responsive -->
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+</div>
+
+
+@*<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Sửa Sản phẩm</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -84,6 +187,7 @@
                                 @Html.LabelFor(model => model.HeatType, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.HeatType, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.DropDownList("HeatType", null, htmlAttributes: new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.HeatType, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -168,5 +272,5 @@
     </div>
     <!-- /.row -->
 
-</div>
+</div>*@
 

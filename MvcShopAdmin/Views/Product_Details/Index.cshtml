@@ -23,6 +23,9 @@
                     <table class="table list-product-table text-center">
                         <tr>
                             <th>
+
+                            </th>
+                            <th>
                                 Hãng
                             </th>
                             <th>
@@ -63,6 +66,9 @@
                             }
 
                             <tr>
+                                <td>
+                                    <button class="btn btn-info increase-order" data-id="@item.Id" data-url="@Url.Action("IncreaseOrder","Product_Details")">Ưu tiên</button>
+                                </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Brand.BrandName)
                                 </td>

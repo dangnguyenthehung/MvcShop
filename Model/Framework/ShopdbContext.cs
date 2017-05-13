@@ -25,6 +25,7 @@ namespace Model.Framework
         public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<ShopInfo> ShopInfoes { get; set; }
         public virtual DbSet<Support> Supports { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<View_ProductDetails> View_ProductDetails { get; set; }
         public virtual DbSet<View_ShopProductInfo> View_ShopProductInfo { get; set; }

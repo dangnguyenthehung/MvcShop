@@ -56,6 +56,20 @@ namespace Model.DbModel
             
             return list;
         }
+        public List<ShopProductInfo> getDetails_Recommend()
+        {
+            var list = new List<ShopProductInfo>();
+            try
+            {
+                list = context.Database.SqlQuery<ShopProductInfo>("Sp_GetShopProductInfo_Recommend").ToList();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+
+            return list;
+        }
 
         // get product details list by brand id
         public List<ShopProductInfo> getDetails_Brand(int id, int sort_Type = 0)
@@ -134,6 +148,17 @@ namespace Model.DbModel
             };
             var name = context.Database.SqlQuery<string>("Sp_GetTypeName @id", SqlParams).SingleOrDefault();
             return name;
+        }
+
+        //increase product order
+        public void Increase_order(int id)
+        {
+            object[] SqlParams =
+            {
+                new SqlParameter("@ID",id)
+            };
+            var name = context.Database.ExecuteSqlCommand("Sp_Inscrease_Product_Order @id", SqlParams);
+            //return name;
         }
     }
 }

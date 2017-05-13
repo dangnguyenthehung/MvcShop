@@ -10,14 +10,17 @@ namespace MvcShop.Models
     {
         public List<ShopProductInfo> ListProduct { get; set; }
 
+        public List<ShopProductInfo> ListProduct_Recommend { get; set; }
+
         private Model.DbModel.ProductDetailsModel context = new Model.DbModel.ProductDetailsModel();
         private List<ShopProductInfo> tempList = new List<ShopProductInfo>();
 
         public HomePageModel()
         {
             int page = 1;
-            tempList = get_all(page);
-            ListProduct = tempList;
+            ListProduct = get_all(page);
+            ListProduct_Recommend = get_recommend();
+             
         }
         private List<ShopProductInfo> get_all(int page)
         {
@@ -25,6 +28,14 @@ namespace MvcShop.Models
 
             return pagination(contextList, page);
         }
+
+        private List<ShopProductInfo> get_recommend()
+        {
+            List<ShopProductInfo> contextList = context.getDetails_Recommend();
+
+            return contextList;
+        }
+
         private List<ShopProductInfo> pagination(List<ShopProductInfo> contextList, int page)
         {
             int item_per_page = 6;

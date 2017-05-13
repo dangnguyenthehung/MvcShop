@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.IO;
+using Model.DbModel;
 
 namespace MvcShopAdmin.Controllers
 {
@@ -209,7 +210,22 @@ namespace MvcShopAdmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        //increase order
+        public JsonResult IncreaseOrder(int id)
+        {
+            var dbModel = new ProductDetailsModel();
+            try
+            {
+                dbModel.Increase_order(id);
+                return Json("Đã cập nhật", JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return Json("Có lỗi xảy ra!", JsonRequestBehavior.AllowGet);
+            }
+            
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

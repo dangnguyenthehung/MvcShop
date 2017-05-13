@@ -26,5 +26,7 @@ namespace Model.Framework
 
         [StringLength(500)]
         public string BrandName { get; set; }
+
+        public int? ProductOrder { get; set; }
     }
 }

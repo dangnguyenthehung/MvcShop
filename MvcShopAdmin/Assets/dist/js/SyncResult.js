@@ -8,12 +8,12 @@
 
 }
 $(function () {
-    setInterval("SyncResult()", 1000 * 30); // 3s gửi request một lần
+    setInterval("SyncResult()", 1000 * 30); // 30s gửi request một lần
 });
 
 function showResult(data) {
     $.each(data, function (i, item) {
-        if (item == "normal") {
+        if (item === "normal") {
             // do nothing
         }
         else {
@@ -74,3 +74,14 @@ function show_notification(noti) {
     //    delay: 20000, // 20s
     //});
 };
+$(function () {
+    $(".increase-order").click(function () {
+        var address = $(this).attr("data-url");
+        var id = $(this).attr("data-id");
+
+        $.get(address, { id : id}, function (data) {
+            show_notification(data);
+        });
+    })
+});
+

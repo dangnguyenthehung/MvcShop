@@ -18,3 +18,24 @@
 .submit-container {
     margin-top: 5px;
 }
+.panel-default {
+    border-top: none;
+    margin-top: 0;
+}
+.panel-default h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.nav-tabs > li:not(.active) > a,
+.nav-tabs > li:not(.active) > a:hover {
+    border: solid 1px #ddd;
+    color: black;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+    background-color: #2980b9;
+    color: white;
+    border-bottom-color: transparent;
+}

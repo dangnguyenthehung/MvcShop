@@ -25,6 +25,10 @@ namespace MvcShopAdmin.Controllers
         public ActionResult Index()
         {
             var product_Details = db.Product_Details.Include(p => p.Brand).Include(p => p.ProductType);
+
+            List<Brand> listBrand = db.Brands.ToList();
+            ViewBag.ListBrand = listBrand;
+
             return View(product_Details.ToList());
         }
 
@@ -223,8 +227,24 @@ namespace MvcShopAdmin.Controllers
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 return Json("Có lỗi xảy ra!", JsonRequestBehavior.AllowGet);
+            } 
+        }
+
+        //
+        public JsonResult UpdateStatus (int id, int status)
+        {
+            var dbModel = new ProductDetailsModel();
+            try
+            {
+                dbModel.UpdateStatus(id, status);
+                return Json("Đã cập nhật", JsonRequestBehavior.AllowGet);
             }
-            
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return Json("Có lỗi xảy ra!", JsonRequestBehavior.AllowGet);
+            }
+
         }
         protected override void Dispose(bool disposing)
         {

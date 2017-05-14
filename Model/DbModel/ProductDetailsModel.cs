@@ -157,7 +157,18 @@ namespace Model.DbModel
             {
                 new SqlParameter("@ID",id)
             };
-            var name = context.Database.ExecuteSqlCommand("Sp_Inscrease_Product_Order @id", SqlParams);
+            var name = context.Database.ExecuteSqlCommand("Sp_Inscrease_Product_Order @ID", SqlParams);
+            //return name;
+        }
+        //update product status
+        public void UpdateStatus(int id, int status)
+        {
+            object[] SqlParams =
+            {
+                new SqlParameter("@ID",id),
+                new SqlParameter("@Status",status)
+            };
+            var res = context.Database.ExecuteSqlCommand("Sp_Change_Product_Status @ID, @Status", SqlParams);
             //return name;
         }
     }

@@ -1,6 +1,6 @@
 ﻿@model MvcShopAdmin.Models.OrdersModel
 @{
-    ViewBag.Title = "Đơn hàng mới";
+    ViewBag.Title = "Đơn hàng đã xử lý";
     Layout = "~/Views/Shared/Layout_Admin.cshtml";
 }
 
@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h3>Đơn hàng đang chờ</h3>
+            <h3>Đơn hàng đã xử lý</h3>
             <div class="panel panel-default">
 
                 <!-- /.panel-heading -->
@@ -71,7 +71,7 @@
                                 </td>
                                 <td>
                                     @*@Html.ActionLink("Chỉnh sửa", "Edit", new { Order_Id = item.Order_Id }) |*@
-                                    @Html.ActionLink("Chi tiết", "Details", new { Order_Id = item.Order_Id })
+                                        @Html.ActionLink("Chi tiết", "Index", "OrderDetails", new { Order_Id = item.Order_Id },"")
                                     <br />
                                     @*@Html.ActionLink("Hoàn tất", "Complete", new { Order_Id = item.Order_Id }) |
                                         @Html.ActionLink("Hủy", "Delete", new { Order_Id = item.Order_Id })*@

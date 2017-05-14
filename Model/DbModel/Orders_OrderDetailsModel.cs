@@ -33,6 +33,21 @@ namespace Model.DbModel
             }
         }
 
+        public List<NewOrder> Get_Completed_Orders()
+        {
+            try
+            {
+                var res = context.Database.SqlQuery<NewOrder>("Sp_Get_Completed_Order").ToList();
+
+                return res;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return new List<NewOrder>();
+            }
+        }
+
         public List<OrderItems> Get_Order_Details(int Order_Id)
         {
             try

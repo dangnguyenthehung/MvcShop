@@ -4,6 +4,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout_Admin.cshtml";
 }
+@{
+    var ListBrand = ViewBag.ListBrand;
+
+}
 <div id="page-wrapper">
     <div class="col-xs-12">
         <h2 class="page-header text-center">Danh sách mặt hàng</h2>
@@ -11,110 +15,127 @@
             <a href="@Url.Action("Create", "Product_Details")"><i class="fa fa-plus fa-fw"></i> Thêm mới</a>
         </p>
     </div>
+    <!-- tab -->
+    <ul class="nav nav-tabs list">
+        @foreach (var item in ListBrand)
+        {
+            if (item == ListBrand[0])
+            {
+                <li class="active"><a data-toggle="tab" href="#@item.Id">@item.BrandName</a></li>
+            }
+            else
+            {
+                <li><a data-toggle="tab" href="#@item.Id">@item.BrandName</a></li>
+            }
+        }
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Tổng hợp danh sách
+    </ul>
+    <div class="tab-content list">
+        @foreach (var item in ListBrand)
+        {
+            var ListProduct = Model.Where(i => i.Brand_Id == item.Id).ToList();
+
+            var divclass = "tab-pane fade";
+            if (item == ListBrand[0])
+            {
+                divclass = "tab-pane fade in active";
+            }
+            <div id="@item.Id" class="@divclass">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3 class="text-center">@item.BrandName</h3>
+                                <table class="table list-product-table text-center">
+                                    <tr>
+                                        <th>
+
+                                        </th>
+                                        <th>
+                                            Mã SP
+                                        </th>
+                                        <th>
+                                            Loại
+                                        </th>
+                                        <th>
+                                            Giá Hãng
+                                        </th>
+                                        <th>
+                                            Giá Bán
+                                        </th>
+                                        <th>
+                                            Hình Ảnh
+                                        </th>
+                                        <th>
+                                            Nóng/lạnh
+                                        </th>
+                                        <th>
+                                            Trạng thái
+                                        </th>
+                                        <th></th>
+                                    </tr>
+
+                                    @foreach (var product in ListProduct)
+                                    {
+                                        string heatType = "Lạnh";
+                                        string status = "Còn hàng";
+                                        var statusClass = "btn btn-success update-status";
+
+                                        if (product.HeatType == 1)
+                                        {
+                                            heatType = "Nóng lạnh";
+                                        }
+                                        if (product.ProductStatus == 0)
+                                        {
+                                            status = "Hết hàng";
+                                            statusClass = "btn btn-danger update-status";
+                                        }
+
+                                        <tr>
+                                            <td>
+                                                <button class="btn btn-info increase-order" data-id="@product.Id" data-url="@Url.Action("IncreaseOrder", "Product_Details")">Ưu tiên</button>
+                                            </td>
+                                            
+                                            <td>
+                                                @Html.DisplayFor(modelItem => product.ProductCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => product.ProductType.TypeName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => product.OldPrice)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => product.NewPrice)
+                                            </td>
+                                            <td class="img-container">
+                                                <img class="image" src="@product.ProductImages" />
+                                            </td>
+                                            <td>
+                                                @heatType
+                                            </td>
+                                            <td>
+                                                <button class="@statusClass" data-id="@product.Id" data-status="@product.ProductStatus" data-url="@Url.Action("UpdateStatus", "Product_Details")">@status</button>
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Sửa", "Edit", new { id = product.Id }) |
+                                                @Html.ActionLink("Chi tiết", "Details", new { id = product.Id }) |
+                                                @Html.ActionLink("Xóa", "Delete", new { id = product.Id })
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </table>
+                                
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <table class="table list-product-table text-center">
-                        <tr>
-                            <th>
-
-                            </th>
-                            <th>
-                                Hãng
-                            </th>
-                            <th>
-                                Loại
-                            </th>
-                            <th>
-                                Mã SP
-                            </th>
-                            <th>
-                                Giá Hãng
-                            </th>
-                            <th>
-                                Giá Bán
-                            </th>
-                            <th>
-                                Hình Ảnh
-                            </th>
-                            <th>
-                                Nóng/lạnh
-                            </th>
-                            <th>
-                                Trạng thái
-                            </th>
-                            <th></th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
-                            string heatType = "Lạnh";
-                            string status = "Còn hàng";
-                            if (item.HeatType == 1)
-                            {
-                                heatType = "Nóng lạnh";
-                            }
-                            if (item.ProductStatus == 0)
-                            {
-                                status = "Hết hàng";
-                            }
-
-                            <tr>
-                                <td>
-                                    <button class="btn btn-info increase-order" data-id="@item.Id" data-url="@Url.Action("IncreaseOrder","Product_Details")">Ưu tiên</button>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Brand.BrandName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProductType.TypeName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProductCode)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.OldPrice)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NewPrice)
-                                </td>
-                                <td class="img-container">
-                                    @*<img class="image" src="@Html.DisplayFor(modelItem => item.ProductImages)"/>*@
-
-                                    <img class="image" src="http://ganxa.net:7777/Uploads/citygarden1.jpg" />
-
-                                </td>
-                                <td>
-                                    @heatType
-                                </td>
-                                <td>
-                                    @status
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                </td>
-                            </tr>
-                        }
-
-                    </table>
-
-                    <!-- /.table-responsive -->
-
-                </div>
-                <!-- /.panel-body -->
+                <!-- /.row -->
             </div>
-            <!-- /.panel -->
+        }
         </div>
-        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.row -->
-
-</div>

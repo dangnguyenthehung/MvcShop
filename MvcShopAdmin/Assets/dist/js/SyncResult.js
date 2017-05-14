@@ -84,4 +84,31 @@ $(function () {
         });
     })
 });
+$(function () {
+    $(".update-status").click(function () {
+        var address = $(this).attr("data-url");
+        var id = $(this).attr("data-id");
+        var status = $(this).attr("data-status");
+        // nếu == 0 -> hết hàng, update thành còn hàng
+        // nếu == 0 -> còn hàng, update thành hết hàng
+        if (status == 0) {
+            status = 1;
+            $(this).attr("data-status", status);
+            $(this).removeClass("btn-danger");
+            $(this).addClass("btn-success");
+            $(this).html("Còn hàng");
+        }
+        else {
+            status = 0;
+            $(this).attr("data-status", status);
+            $(this).removeClass("btn-success");
+            $(this).addClass("btn-danger");
+            $(this).html("Hết hàng");
+        }
+
+        $.get(address, { id: id, status: status }, function (data) {
+            show_notification(data);
+        });
+    })
+});
 

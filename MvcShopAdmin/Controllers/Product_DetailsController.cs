@@ -176,8 +176,22 @@ namespace MvcShopAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProductCode,ProductName,ProductDetail,OldPrice,NewPrice,ProductImages,HeatType,ProductWeight,ProductDimension,InsertDate,ProductOrder,ProductStatus,ProductType_Id,Brand_Id")] Product_Details product_Details)
+        public ActionResult Edit(Product_Details product_Details)
         {
+            product_Details.ProductImages = "http://mvcshopuploadimages.gear.host/Uploads/default.png";
+            
+            foreach (string file in Request.Files)
+            {
+                var postedFile = Request.Files[file];
+
+                var res = UploadImgAsync(postedFile).ToString();
+                //product_Details.ProductImages = res;
+                var baseAddress = "http://mvcshopuploadimages.gear.host/Uploads/";
+                var imgUrl = Path.Combine(baseAddress, postedFile.FileName);
+
+                product_Details.ProductImages = imgUrl;
+
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(product_Details).State = EntityState.Modified;

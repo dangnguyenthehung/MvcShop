@@ -17,7 +17,13 @@ namespace MvcShopAdmin.Controllers
         // GET: ProductTypes
         public ActionResult Index()
         {
-            ViewBag.ParentTypeId = new SelectList(db.ProductTypes, "Id", "TypeName");
+            var parentTypeList = db.ProductTypes.ToList();
+            parentTypeList.Add(new ProductType {
+                Id = 0,
+                TypeName = "Thuộc nhóm",
+                ParentTypeId = 0
+            });
+            ViewBag.ParentTypeId = new SelectList(parentTypeList, "Id", "TypeName",0); ;
             return View(db.ProductTypes.ToList());
         }
 
@@ -77,7 +83,14 @@ namespace MvcShopAdmin.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.ParentTypeId = new SelectList(db.ProductTypes, "Id", "TypeName");
+            var parentTypeList = db.ProductTypes.ToList();
+            parentTypeList.Add(new ProductType
+            {
+                Id = 0,
+                TypeName = "Thuộc nhóm",
+                ParentTypeId = 0
+            });
+            ViewBag.ParentTypeId = new SelectList(parentTypeList, "Id", "TypeName", 0); ;
 
             return View(productType);
         }

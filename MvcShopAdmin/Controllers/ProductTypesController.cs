@@ -53,14 +53,15 @@ namespace MvcShopAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(string TypeName, int ParentTypeId)
+        public ActionResult Create(string TypeName, int ParentTypeId, int TypeOrder)
         {
             if (ModelState.IsValid)
             {
                 var productType = new ProductType()
                 {
                     TypeName = TypeName,
-                    ParentTypeId = ParentTypeId
+                    ParentTypeId = ParentTypeId,
+                    TypeOrder = TypeOrder
                 };
                 db.ProductTypes.Add(productType);
                 db.SaveChanges();
@@ -100,7 +101,7 @@ namespace MvcShopAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TypeName,ParentTypeId")] ProductType productType)
+        public ActionResult Edit([Bind(Include = "Id,TypeName,ParentTypeId,TypeOrder")] ProductType productType)
         {
             if (ModelState.IsValid)
             {

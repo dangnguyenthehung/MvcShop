@@ -1,2 +1,0 @@
-D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\Microsoft.CodeAnalysis.dll

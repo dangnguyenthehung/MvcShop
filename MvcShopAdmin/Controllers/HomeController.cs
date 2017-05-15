@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MvcShopAdmin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AdminBaseController
     {
         public ActionResult Index()
         {

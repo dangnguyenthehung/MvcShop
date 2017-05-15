@@ -8,7 +8,7 @@ using Model.DbModel;
 
 namespace MvcShopAdmin.Controllers
 {
-    public class CompleteOrdersController : Controller
+    public class CompleteOrdersController : AdminBaseController
     {
         // GET: CompleteOrders
         public ActionResult Index()

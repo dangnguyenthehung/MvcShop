@@ -17,7 +17,7 @@ using Model.DbModel;
 
 namespace MvcShopAdmin.Controllers
 {
-    public class Product_DetailsController : Controller
+    public class Product_DetailsController : AdminBaseController
     {
         private ShopdbContext db = new ShopdbContext();
 

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MvcShopAdmin.Controllers
 {
-    public class OrderDetailsController : Controller
+    public class OrderDetailsController : AdminBaseController
     {
         // GET: OrderDetails
         public ActionResult Index(int Order_Id)

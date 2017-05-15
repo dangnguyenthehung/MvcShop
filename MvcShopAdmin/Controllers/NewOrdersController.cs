@@ -10,7 +10,7 @@ using MvcShopAdmin.Helper;
 
 namespace MvcShopAdmin.Controllers
 {
-    public class NewOrdersController : Controller
+    public class NewOrdersController : AdminBaseController
     {
         // GET: NewOrders
         public ActionResult Index()

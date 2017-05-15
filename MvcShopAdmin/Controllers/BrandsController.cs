@@ -10,7 +10,7 @@ using Model.Framework;
 
 namespace MvcShopAdmin.Controllers
 {
-    public class BrandsController : Controller
+    public class BrandsController : AdminBaseController
     {
         private ShopdbContext db = new ShopdbContext();
 

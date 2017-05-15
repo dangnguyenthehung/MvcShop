@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-xs-12 col-md-8 col-md-push-2 text-center message">
+    <h3>@ViewBag.Message</h3>
+    <h3>Click vào @Html.ActionLink("đây", "Index", "Login") để quay trở về trang Đăng nhập</h3>
+</div>
+

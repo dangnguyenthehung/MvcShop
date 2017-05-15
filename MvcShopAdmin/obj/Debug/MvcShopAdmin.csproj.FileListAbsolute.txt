@@ -1,0 +1,9 @@
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\System.Collections.Immutable.dll
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\System.IO.FileSystem.dll
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\System.Reflection.Metadata.dll
+D:\Project\MvcShop\MvcShop\MvcShopAdmin\bin\roslyn\VBCSCompiler.exe

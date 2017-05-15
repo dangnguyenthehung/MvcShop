@@ -1,6 +1,7 @@
 ﻿using Model.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,33 @@ namespace Model.DbModel
                     }
                 }
             }
+        }
+
+        public bool Update_Account(string UserName, string newPassword)
+        {
+            var account = context.Users.Where(user => user.UserName == UserName).SingleOrDefault();
+            if (account != null)
+            {
+                account.PW = newPassword;
+
+                context.Entry(account).State = EntityState.Modified;
+                context.SaveChanges();
+
+                return true;
+            }
+            
+            return false;
+        }
+
+        public bool ConfirmPassword(string UserName, string Password)
+        {
+            var res = context.Users.Where(user => user.UserName == UserName && user.PW == Password).SingleOrDefault();
+
+            if(res != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

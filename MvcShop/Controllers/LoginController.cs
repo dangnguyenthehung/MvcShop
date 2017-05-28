@@ -30,7 +30,7 @@ namespace MvcShop.Controllers
                     userSession.UserID = user.Id;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
 
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index","TrangChu");
                 }
                 else if (result == 0)
                 {

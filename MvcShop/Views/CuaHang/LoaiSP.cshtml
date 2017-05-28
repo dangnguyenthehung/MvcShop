@@ -1,0 +1,93 @@
+﻿@model MvcShop.Models.ShopModel
+@{
+    string status = "Còn hàng";
+
+}
+@{
+    ViewBag.Title = "Loại sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title text-center">@ViewBag.PageTitle</h2>
+    
+        <div class="col-xs-12 col-md-3 col-md-offset-9 sort_form">
+            <div class="row">
+                <div class="col-xs-12">
+                    @using (Html.BeginForm("Type_Sort", "CuaHang", new RouteValueDictionary { { "typeID", ViewBag.Type } }, FormMethod.Post))
+                    {
+                        @Html.DropDownList("sort_Type")
+                    }
+                </div>
+            </div>
+            
+        </div>
+
+        @{
+            MvcShop.Models.ShopModel partialModel = Model;
+            Html.RenderPartial("ListProduct", partialModel);
+        }
+
+    </div><!--features_items-->
+    <div class="col-xs-12 pagination-container">
+        <ul class="pagination">
+            @{
+                var count_product = ViewBag.Count;
+                var total_number_of_pages = (count_product / 21) + 1;
+                var begin_page = 1;
+                var end_page = 5;
+
+                if (total_number_of_pages < 5)
+                {
+                    begin_page = 1;
+                    end_page = total_number_of_pages;
+                }
+                else
+                {
+                    begin_page = ViewBag.Page;
+                    if ((begin_page + 5) > total_number_of_pages)
+                    {
+                        begin_page = total_number_of_pages - 5;
+                        end_page = total_number_of_pages;
+                    }
+                    else
+                    {
+                        end_page = begin_page + 5;
+                    }
+                }
+
+                if (begin_page > 1)
+                {
+                    <li>@Html.ActionLink("<<", "LoaiSP", new { typeId = @ViewBag.Type, page = begin_page - 1 })</li>
+                }
+
+                for (var i = begin_page; i <= end_page; i++)
+                {
+                    if (ViewBag.Page == i)
+                    {
+                        <li class="active">@Html.ActionLink(i.ToString(), "LoaiSP", new { typeId = @ViewBag.Type, page = i })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink(i.ToString(), "LoaiSP", new { typeId = @ViewBag.Type, page = i })</li>
+                    }
+                }
+                if (end_page < total_number_of_pages)
+                {
+                    <li>@Html.ActionLink(">>", "LoaiSP", new { typeId = @ViewBag.Type, page = end_page + 1 })</li>
+                }
+
+            }
+
+            @*<li class="active">@Html.ActionLink("1", "LoaiSP", new { typeId = @ViewBag.Type, page = 1 })</li>
+            <li>@Html.ActionLink("2", "LoaiSP", new { typeId = @ViewBag.Type, page = 2 })</li>
+            <li>@Html.ActionLink("3", "LoaiSP", new { typeId = @ViewBag.Type, page = 3 })</li>
+
+            <li><a href="">&raquo;</a></li>*@
+        </ul>
+    </div>
+</div>
+
+

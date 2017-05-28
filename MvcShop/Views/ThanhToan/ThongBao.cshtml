@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "ThongBao";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container">
+    <div class="col-xs-12">
+        <div class="features_items">
+            @if (ViewBag.isSuccess)
+            {
+                <h2 class="title text-center">Thông báo</h2>
+                <h3 class="text-center">Đặt hàng thành công!</h3>
+                <h4 class="text-center">Chúng tôi sẽ liên hệ với bạn để xác nhận đơn hàng sớm nhất có thể.</h4>
+                <br/>
+                <h4 class="text-center">Cám ơn bạn đã sử dụng dịch vụ của chúng tôi!</h4>
+            }
+            else
+            {
+                <h2 class="title text-center">Thông báo</h2>
+                <h3 class="text-center">Đặt hàng thất bại!</h3>
+                <h4 class="text-center">Chúng tôi thành thật xin lỗi vì sự bất tiện này. Đã có lỗi không mong muốn xảy ra!</h4>
+                <h4 class="text-center">Bạn có thể thử lại, nếu vẫn không khắc phục được, xin vui lòng liên hệ với chúng tôi để được hỗ trợ.</h4>
+                <br />
+                <h4 class="text-center">Cám ơn bạn đã sử dụng dịch vụ của chúng tôi!</h4>
+            }
+        </div>
+    </div>    
+</div>

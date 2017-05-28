@@ -1,0 +1,191 @@
+﻿@model MvcShop.Models.CompareModel
+@{
+    ViewBag.Title = "So sánh";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string item_1_price = Model.formattedPrice(Model.Item_1.NewPrice);
+    string item_2_price = Model.formattedPrice(Model.Item_2.NewPrice);
+    string item_3_price = "";
+    if (Model.Item_3 != null)
+    {
+        item_3_price = Model.formattedPrice(Model.Item_3.NewPrice);
+    }
+}
+<div class="col-sm-9 padding-right">
+    <h2 class="title text-center">@ViewBag.PageTitle</h2>
+
+    <table class="compare">
+        <tr>
+            <td></td>
+
+            <td>
+                <b>
+                    <a href="@Url.Action("Index","ThongTinSanPham", new { id = Model.Item_1.Id})">
+                        @Html.DisplayFor(i => Model.Item_1.ProductCode)
+                    </a>
+                </b>
+            </td>
+
+            <td>
+                <b>
+                    <a href="@Url.Action("Index","ThongTinSanPham", new { id = Model.Item_2.Id})">
+                        @Html.DisplayFor(i => Model.Item_2.ProductCode)
+                    </a>
+                </b>
+            </td>
+
+            @if (Model.Item_3 != null)
+            {
+                <td>
+                    <b>
+                        <a href="@Url.Action("Index","ThongTinSanPham", new { id = Model.Item_3.Id})">
+                            @Html.DisplayFor(i => Model.Item_3.ProductCode)
+                        </a>
+                    </b>
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <b>Hình ảnh</b>
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(i => Model.Item_1.ProductImages)" alt="" />
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(i => Model.Item_2.ProductImages)" alt="" />
+            </td>
+            @if (Model.Item_3 != null)
+            {
+                <td>
+                    <img src="@Html.DisplayFor(i => Model.Item_3.ProductImages)" alt="" />
+                </td>
+            }
+
+        </tr>
+        <tr>
+            <td>
+                <b>Thương hiệu</b>
+            </td>
+            <td>
+                @Html.DisplayFor(i => Model.Item_1.BrandName)
+            </td>
+            <td>
+                @Html.DisplayFor(i => Model.Item_2.BrandName)
+            </td>
+
+            @if (Model.Item_3 != null)
+            {
+                <td>
+                    @Html.DisplayFor(i => Model.Item_3.BrandName)
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <b>Chủng loại</b>
+            </td>
+            <td>
+                @Html.DisplayFor(i => Model.Item_1.TypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(i => Model.Item_2.TypeName)
+            </td>
+
+            @if (Model.Item_3 != null)
+            {
+                <td>
+                    @Html.DisplayFor(i => Model.Item_3.TypeName)
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <b>Trọng lượng (kg)</b>
+            </td>
+            <td>
+                @Html.DisplayFor(i => Model.Item_1.ProductWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(i => Model.Item_2.ProductWeight)
+            </td>
+
+            @if (Model.Item_3 != null)
+            {
+                <td>
+                    @Html.DisplayFor(i => Model.Item_3.ProductWeight)
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <b>Kích thước <br /> (DàixRộngxCao) (mm)</b>
+            </td>
+            <td>
+                @Html.DisplayFor(i => Model.Item_1.ProductDimension)
+            </td>
+            <td>
+                @Html.DisplayFor(i => Model.Item_2.ProductDimension)
+            </td>
+
+            @if (Model.Item_3 != null)
+            {
+                <td>
+                    @Html.DisplayFor(i => Model.Item_3.ProductDimension)
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <b>Khác</b>
+            </td>
+            <td></td>
+            <td></td>
+            @if (Model.Item_3 != null)
+            {
+                <td></td>
+            }
+        </tr>
+        <tr class="compare_price">
+            <td>
+                <b>Giá</b>
+            </td>
+            <td>
+                @item_1_price <sup>đ</sup>
+            </td>
+            <td>
+                @item_2_price <sup>đ</sup>
+            </td>
+
+            @if (Model.Item_3 != null)
+            {
+                <td>
+                    @item_3_price <sup>đ</sup>
+                </td>
+            }
+        </tr>
+        <tr class="compare_addToCart">
+            <td>
+                <b></b>
+            </td>
+            <td>
+                <div class="btn btn-default add-to-cart" data-productID="@Html.DisplayFor(m => Model.Item_1.Id)"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</div>
+            </td>
+            <td>
+                <div class="btn btn-default add-to-cart" data-productID="@Html.DisplayFor(m => Model.Item_2.Id)"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</div>
+            </td>
+
+            @if (Model.Item_3 != null)
+            {
+                <td>
+                    <div class="btn btn-default add-to-cart" data-productID="@Html.DisplayFor(m => Model.Item_3.Id)"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</div>
+                </td>
+            }
+        </tr>
+    </table>
+</div>
+
+
+
+

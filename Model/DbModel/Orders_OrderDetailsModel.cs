@@ -145,5 +145,23 @@ namespace Model.DbModel
             }
         }
 
+        public void Delete_Order_By_Id(int id)
+        {
+            try
+            {
+                object[] sqlParams =
+                {
+                    new SqlParameter("@Order_Id", id)
+                };
+                var res = context.Database.ExecuteSqlCommand("Sp_Delete_Order_By_Id @Order_Id", sqlParams);
+
+                //return res;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                //return 0;
+            }
+        }
     }
 }

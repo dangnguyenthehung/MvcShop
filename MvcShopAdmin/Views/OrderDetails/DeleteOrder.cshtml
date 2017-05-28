@@ -1,35 +1,18 @@
 ﻿@model MvcShopAdmin.Models.OrderDetailsModel
 @{
-    ViewBag.Title = "Chi tiết đơn hàng";
+    ViewBag.Title = "Xóa đơn hàng";
     Layout = "~/Views/Shared/Layout_Admin.cshtml";
 }
-@{
-    string orderStatus = "";
-    switch (Model.OrderInfo.OrderStatus)
-    {
-        case 1:
-            orderStatus = "Chờ xác nhận";
-            break;
 
-        case 2:
-            orderStatus = "Đã xử lý xong";
-            break;
-
-        case 0:
-            orderStatus = "Đã hủy";
-            break;
-        default:
-            orderStatus = "Chờ xác nhận";
-            break;
-    };
-}
 
 <div id="page-wrapper" class="OrderDetails">
-
+    
     <div class="row">
+        <h3 class="text-center">Xóa Đơn hàng</h3>
+        <h4 class="text-center text-danger">Bạn có chắc muốn xóa?</h4>
         <div class="col-xs-12 checkout-info">
             <h3>Thông tin đặt hàng</h3>
-            @using (Html.BeginForm("VerifyOrder","OrderDetails"))
+            @using (Html.BeginForm("VerifyOrder", "OrderDetails"))
             {
                 <div class="row">
                     <div class="col-md-6">
@@ -39,7 +22,7 @@
                                 @Html.LabelFor(i => i.OrderInfo.Customer_Name)
                             </div>
                             <div class="col-md-8">
-                                @Html.TextBoxFor(i => i.OrderInfo.Customer_Name, new { @class = "form-control" })
+                                @Html.TextBoxFor(i => i.OrderInfo.Customer_Name, new {@class = "form-control", @disabled = "true" })
                             </div>
                         </div>
                         <div class="row">
@@ -47,7 +30,7 @@
                                 @Html.LabelFor(i => i.OrderInfo.Customer_Tel)
                             </div>
                             <div class="col-md-8">
-                                @Html.TextBoxFor(i => i.OrderInfo.Customer_Tel, new { @class = "form-control" })
+                                @Html.TextBoxFor(i => i.OrderInfo.Customer_Tel, new {@class = "form-control", @disabled = "true" })
                             </div>
                         </div>
                         <div class="row">
@@ -55,7 +38,7 @@
                                 @Html.LabelFor(i => i.OrderInfo.Delivery_Address)
                             </div>
                             <div class="col-md-8">
-                                @Html.TextBoxFor(i => i.OrderInfo.Delivery_Address, new { @class = "form-control" })
+                                @Html.TextBoxFor(i => i.OrderInfo.Delivery_Address, new {@class = "form-control", @disabled = "true" })
                             </div>
                         </div>
                         <div class="row">
@@ -63,7 +46,7 @@
                                 @Html.LabelFor(i => i.OrderInfo.District_Name)
                             </div>
                             <div class="col-md-8">
-                                @Html.TextBoxFor(i => i.OrderInfo.District_Name, new { @class = "form-control" })
+                                @Html.TextBoxFor(i => i.OrderInfo.District_Name, new {@class = "form-control", @disabled = "true" })
                             </div>
                         </div>
                         <div class="row">
@@ -71,7 +54,7 @@
                                 @Html.LabelFor(i => i.OrderInfo.City_Name)
                             </div>
                             <div class="col-md-8">
-                                @Html.TextBoxFor(i => i.OrderInfo.City_Name, new { @class = "form-control" })
+                                @Html.TextBoxFor(i => i.OrderInfo.City_Name, new {@class = "form-control", @disabled = "true" })
                             </div>
                         </div>
                         <div class="row">
@@ -79,7 +62,7 @@
                                 @Html.LabelFor(i => i.OrderInfo.OrderDate)
                             </div>
                             <div class="col-md-8">
-                                @Html.TextBoxFor(i => i.OrderInfo.OrderDate, new { @class = "form-control", @disabled = "true" })
+                                @Html.TextBoxFor(i => i.OrderInfo.OrderDate, new {@class = "form-control", @disabled = "true"})
                             </div>
                         </div>
                     </div>
@@ -91,16 +74,8 @@
                                 @Html.LabelFor(i => i.OrderInfo.TotalMoney)
                             </div>
                             <div class="col-md-8 TotalMoney">
-                                @Html.TextBoxFor(i => i.OrderInfo.TotalMoney, new { @class = "form-control", Value = Model.formatted_TotalMoney() })
+                                @Html.TextBoxFor(i => i.OrderInfo.TotalMoney, new {@class = "form-control", Value = Model.formatted_TotalMoney(), @disabled = "true" })
                                 <span class="currency">(đồng)</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                @Html.LabelFor(i => i.OrderInfo.OrderStatus)
-                            </div>
-                            <div class="col-md-8 orderStatus">
-                                @Html.Label(orderStatus)
                             </div>
                         </div>
                         <div class="row">
@@ -108,31 +83,7 @@
                                 @Html.LabelFor(i => i.OrderInfo.Notes)
                             </div>
                             <div class="col-md-8">
-                                @Html.TextAreaFor(i => i.OrderInfo.Notes, new { @class = "form-control", @rows = 5 })
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-4">
-                                <div class="col-xs-7">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            @*<a href="@Url.Action("VerifyOrder","OrderDetails", new { Order_Id = Model.OrderInfo
-                                        .Order_Id})" class="VerifyOrder">Xác nhận đơn hàng</a>*@
-                                            <button type="submit" class="VerifyOrder">Xác nhận đơn hàng</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-5">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <a href="@Url.Action("DeleteOrder","OrderDetails", new { id = Model.OrderInfo
-                                        .Order_Id})" class="DeleteOrder">Xóa đơn hàng</a>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @Html.TextAreaFor(i => i.OrderInfo.Notes, new {@class = "form-control", @rows = 5, @disabled = "true" })
                             </div>
                         </div>
                     </div>
@@ -180,7 +131,7 @@
                                     @Html.DisplayFor(modelItem => item.BrandName)
                                 </td>
                                 <td>
-                                    @Html.EditorFor(modelItem => item.Quantity)
+                                    @Html.DisplayFor(modelItem => item.Quantity)
                                 </td>
                                 <td>
                                     @Model.formatted_item_Price(item.Price) đ
@@ -188,47 +139,35 @@
                                 <td>
                                     @Model.formatted_item_Price(item.TotalPrice) đ
                                 </td>
-                                <td>
-                                    @*<a href="@Url.Action("UpdateQuantity","OrderDetails", new { OrderItem_Id = item.Id, Quantity = item.Quantity})" class="UpdateQuantity">
-                                            Cập nhật
-                                        </a>*@
-                                    <span data-id="@item.Id" class="UpdateQuantity">
-                                        Cập nhật
-                                    </span>
-
-                                    <a href="@Url.Action("Delete","OrderDetails", new { OrderItem_Id = item.Id})" class="DeleteItem">
-                                        Xóa
-                                    </a>
-                                </td>
                             </tr>
                         }
 
                     </table>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-3">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-actions no-color">
+                                        <input type="submit" value="Xóa" class="btn btn-danger"/>
+                                        &nbsp;&nbsp;
+                                        @Html.ActionLink("Quay lại", "Index")
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.panel-body -->
+                
             </div>
             <!-- /.panel -->
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-
 </div>
-<script>
-    var AppUrlSetting = {
-        UpdateQuantity: '@Url.Action("UpdateQuantity", "OrderDetails")'
-    }
-    $(".UpdateQuantity").click(function () {
-        var quantity = $(this).parents(".cart-item").find("#item_Quantity").val();
 
-        var url = AppUrlSetting.UpdateQuantity;
 
-        var OrderItem_Id = $(this).attr("data-id");
-
-        $.getJSON(url, { OrderItem_Id: OrderItem_Id, Quantity: quantity }, function (response) {
-            // do nothing
-            console.log(response);
-            location.reload();
-        });
-    })
-</script>

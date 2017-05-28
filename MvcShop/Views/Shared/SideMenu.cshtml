@@ -14,7 +14,7 @@
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#" href="#@Html.DisplayFor(i => item.Id)">
                                 <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                @Html.ActionLink(item.TypeName.ToString(),"Types","Shop", new { typeId = item.Id, page = 1 },null)
+                                @Html.ActionLink(item.TypeName.ToString(),"LoaiSP","CuaHang", new { typeId = item.Id, page = 1 },null)
                                 @*@Html.DisplayFor(i => item.TypeName)*@
                             </a>
                         </h4>
@@ -27,7 +27,7 @@
                                     if (subitem.ParentTypeId == item.Id)
                                     {
                                         <li>
-                                            @Html.ActionLink(subitem.TypeName.ToString(),"Types","Shop", new { typeId = subitem.Id, page = 1 },null)
+                                            @Html.ActionLink(subitem.TypeName.ToString(),"LoaiSP","CuaHang", new { typeId = subitem.Id, page = 1 },null)
                                         </li>
                                         @*<li><a href="@Html.DisplayFor(s => subitem.Id)">
                                             @Html.DisplayFor(s => subitem.TypeName)
@@ -50,7 +50,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            @Html.ActionLink(item.TypeName.ToString(), "Types", "Shop", new { typeId = item.Id, page = 1 },null)
+                            @Html.ActionLink(item.TypeName.ToString(), "LoaiSP", "CuaHang", new { typeId = item.Id, page = 1 },null)
                             @*<a href="#">@Html.DisplayFor(i => item.TypeName)</a>*@
                         </h4>
                     </div>
@@ -153,14 +153,14 @@
                     @foreach (var item in Model.Brand_Number_of_Product)
                     {
                         <li>
-                            <a href="@Url.Action("Brands", "Shop", new { brandId = item.Id, page = 1})">
+                            <a href="@Url.Action("Hang", "CuaHang", new { brandId = item.Id, page = 1})">
                                 <span class="pull-right">(@Html.DisplayFor(i => item.NumberOfProduct))</span>
                                 <span>@Html.DisplayFor(i => item.BrandName)</span>
                             </a>
                         </li>
 
                         @*<li>
-                                @Html.ActionLink(item.BrandName.ToString(), "Brands", "Shop", new { brandId = item.Id, page = 1}, null)
+                                @Html.ActionLink(item.BrandName.ToString(), "Hang", "CuaHang", new { brandId = item.Id, page = 1}, null)
                                     <span class="pull-right">(@Html.DisplayFor(i => item.NumberOfProduct))</span>
                             </li>*@
                     }
@@ -207,7 +207,7 @@
                 <b>0 đ</b> <b class="pull-right">60.000.000 đ</b>
             </div>
             <div class="price-range-form col-xs-12 clearfix">
-                @using (Html.BeginForm("Price_range_filter", "Shop"))
+                @using (Html.BeginForm("Price_range_filter", "CuaHang"))
                 {
                     <div class="hidden">
                         @Html.TextBox("range")

@@ -4,8 +4,10 @@ using MvcShopAdmin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Model.Framework;
 
 namespace MvcShopAdmin.Controllers
 {
@@ -54,5 +56,40 @@ namespace MvcShopAdmin.Controllers
 
             return RedirectToAction("Index","NewOrders");
         }
+        //public ActionResult DeleteOrder (int id)
+        //{
+        //    var dbModel = new Orders_OrderDetailsModel();
+
+        //    dbModel.Delete_Order_By_Id(id);
+
+        //    return RedirectToAction("Index", "NewOrders");
+        //}
+        // GET: Product_Details/Delete/5
+        public ActionResult DeleteOrder(int id)
+        {
+            
+            var dbModel = new Orders_OrderDetailsModel();
+
+            var model = new OrderDetailsModel
+            {
+                OrderInfo = dbModel.Get_Order_By_Id(id),
+                listItem = dbModel.Get_Order_Details(id)
+            };
+            return View(model);
+        }
+
+        // POST: Product_Details/Delete/5
+        [HttpPost, ActionName("DeleteOrder")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var dbModel = new Orders_OrderDetailsModel();
+
+            dbModel.Delete_Order_By_Id(id);
+
+            return RedirectToAction("Index", "NewOrders");
+        }
+
+
     }
 }

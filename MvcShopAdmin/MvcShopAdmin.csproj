@@ -349,7 +349,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Layout_Admin.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product_Details\Create.cshtml" />
     <Content Include="Views\Product_Details\Delete.cshtml" />
     <Content Include="Views\Product_Details\Details.cshtml" />
@@ -373,6 +372,7 @@
     <Content Include="Views\Login\ConfirmPassword.cshtml" />
     <Content Include="Views\Login\Update_TaiKhoan.cshtml" />
     <Content Include="Views\Login\Message.cshtml" />
+    <Content Include="Views\OrderDetails\DeleteOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

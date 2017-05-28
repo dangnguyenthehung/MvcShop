@@ -1,0 +1,101 @@
+﻿@model Model.Object.BillingInfo
+@{
+    ViewBag.Title = "Check out";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<script>
+    var AppUrlSetting = {
+            Get_Quan: '@Url.Action("Get_Quan", "ThanhToan")'
+        }
+</script>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/GetJSON.js"></script>
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Thông tin giao hàng</li>
+            </ol>
+        </div><!--/breadcrums-->
+        @*<div class="step-one">
+        <h2 class="heading">Step1</h2>
+    </div>
+    <div class="checkout-options">
+        <h3>New User</h3>
+        <p>Checkout options</p>
+        <ul class="nav">
+            <li>
+                <label><input type="checkbox"> Register Account</label>
+            </li>
+            <li>
+                <label><input type="checkbox"> Guest Checkout</label>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-times"></i>Cancel</a>
+            </li>
+        </ul>
+    </div><!--/checkout-options-->
+    <div class="register-req">
+        <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
+    </div><!--/register-req-->*@
+        <div class="shopper-informations">
+            <div class="row">
+                @*<div class="col-sm-3">
+                    <div class="shopper-info">
+                        <p>Shopper Information</p>
+                        <form>
+                            <input type="text" placeholder="Display Name">
+                            <input type="text" placeholder="User Name">
+                            <input type="password" placeholder="Password">
+                            <input type="password" placeholder="Confirm password">
+                        </form>
+                        <a class="btn btn-primary" href="">Get Quotes</a>
+                        <a class="btn btn-primary" href="">Continue</a>
+                    </div>
+                </div>*@
+                <div class="form-checkout-info">
+                    <h4>Giao hàng đến</h4>
+                    @using (Html.BeginForm())
+                    {
+                        <div class="col-xs-12 col-md-4 clearfix">
+                            <div class="bill-to">
+                                <div class="">
+                                    @Html.TextBoxFor(m => m.Customer_Name, new { @placeholder = "Họ tên" })
+                                    @Html.TextBoxFor(m => m.Customer_Email, new { @placeholder = "Email" })
+                                    @Html.TextBoxFor(m => m.Customer_Phone, new { @placeholder = "Số điện thoại" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+                            <div class="bill-to">
+                                <div class="">
+                                    @Html.DropDownList("City_ID", null, htmlAttributes: new { @class = "form-control", @id = "ThanhPho" })
+                                    @Html.DropDownList("District_ID", null, htmlAttributes: new { @class = "form-control", @placeholder = "Quận", @id = "Quan" })
+                                    @Html.TextBoxFor(m => m.Delivery_Address, new { @placeholder = "Địa chỉ" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="order-message">
+                                @Html.TextAreaFor(m => m.Notes, new { @placeholder = "Ghi chú", @rows = "7" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="checkout-submit col-xs-6 col-md-2">
+                                <button type="submit">
+                                    Tiến hành đặt hàng
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+
+
